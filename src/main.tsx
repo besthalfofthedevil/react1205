@@ -1,18 +1,29 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client'
+import { createRoot } from "react-dom/client";
+import {
+  restaurants,
+} from "./mocks/restaurants.mock";
+import { RestaurantComponent } from "./components";
 
-const rootElement = document.getElementById('root')
+
+
+const rootElement = document.getElementById("root");
 if (!rootElement) {
-  throw new Error('Root element not found')
-} 
-const appRoot = createRoot(rootElement)
+  throw new Error("Root element not found");
+}
 
-const data = [1,2,3,4,5]
+const appRoot = createRoot(rootElement);
 
-const reactElement = <ul>
-  {data.map((item) => (
-    <li key={item}>{item}</li>
-  ))}
-</ul>
 
-appRoot.render(reactElement)
+
+const reactElement = (
+  <div>
+    <h1>Restaurants</h1>
+    {restaurants.map((restaurant) => {
+      return (
+        <RestaurantComponent key={restaurant.id} restaurant={restaurant} />
+      );
+    })}
+  </div>
+);
+
+appRoot.render(reactElement);
