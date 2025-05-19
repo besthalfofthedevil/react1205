@@ -1,54 +1,25 @@
-# React + TypeScript + Vite
+### ДЗ - 1
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Зарегистрироваться на гитхабе (если нет аккаунта) и создать публичный репозиторий для домашнего проекта - https://github.com/
+- Для отработки механизма проверки ДЗ, нужно создать ветку hw-1, в рамках нее создать readme файл, сделать коммит и создать пулреквест. Ссылку на пулреквест скинуть в чатик в тред по ДЗ-1. После аппрува можно мержить и подтягивать изменения в main ветку в локальный репозиторий
+- В качестве ide советую использовать vs code - https://code.visualstudio.com/. Если уже есть ide (например, webstorm), можете продолжать использовать
+- поставить node.js - https://nodejs.org/en
+- Крэш курс по гиту - https://www.youtube.com/playlist?list=PLDyvV36pndZEgSRzWGuXFrTRUFuAAMciE
 
-Currently, two official plugins are available:
+### ДЗ - 2
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+1. поставить расширение prettier https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode и форматировать свой код. В vs code можно настроить прогон на сохранения файла
+2. создать ветку для ДЗ - hw-2
+3. создать проект с помощью vite - https://vitejs.dev/guide/#scaffolding-your-first-vite-project (можете использовать любой пакетный менеджер)
+4. почистить проект и установить зависимости
+5. скопировать к себе моковые данные из этого проекта (materials/mock.js)
+6. Отобразить все рестораны из моковых данных (импортируем константу в main.jsx и используем данные). Отображаем рестораны друг за другом.
+   1. Название ресторана
+   2. Заголовок - Меню (h3)
+   3. Список названий блюд (используем тег ul и li)
+   4. Заголовок - Отзывы (h3)
+   5. Список текстов отзывов (используем тег ul и li)
+7. поправить eslint.config.js в соответсвии с лекционным репозиторием (также нужно добавить зависимость eslint-plugin-react)
+8. сделать коммит и запушить
+9. открыть ПР из ветки с ДЗ в основную ветку
+10. отправить ссылку на ПР в ветку ДЗ-2
