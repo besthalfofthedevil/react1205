@@ -1,10 +1,6 @@
 import { createRoot } from "react-dom/client";
-import {
-  restaurants,
-} from "./mocks/restaurants.mock";
+import { restaurants } from "./mocks/restaurants.mock";
 import { RestaurantComponent } from "./components";
-
-
 
 const rootElement = document.getElementById("root");
 if (!rootElement) {
@@ -13,17 +9,15 @@ if (!rootElement) {
 
 const appRoot = createRoot(rootElement);
 
-
-
-const reactElement = (
+const app = (
   <div>
     <h1>Restaurants</h1>
     {restaurants.map((restaurant) => {
       return (
-        <RestaurantComponent key={restaurant.id} restaurant={restaurant} />
+        <RestaurantComponent key={restaurant.id} restaurantItem={restaurant} />
       );
     })}
   </div>
 );
 
-appRoot.render(reactElement);
+appRoot.render(app);
