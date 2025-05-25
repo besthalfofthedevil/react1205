@@ -7,16 +7,19 @@ export const Restaurants = ({
   restaurants,
 }: PropsWithChildren<{ restaurants: Restaurant[] }>) => {
   const [activeId, setActiveId] = useState(0);
+  console.log('Restaurants rendered')
+
   return (
     <>
       <section className="tabs">
         {restaurants.map(({ name, id }, idx) => {
+            const isActive =  idx === activeId
           return (
             <Tab
               key={id}
               label={name}
-              isActive={idx === activeId}
-              setActive={() => setActiveId(idx)}
+              isActive={isActive}
+              setActive={() => !isActive && setActiveId(idx)}
             />
           );
         })}
