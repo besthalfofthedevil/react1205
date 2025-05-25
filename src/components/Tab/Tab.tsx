@@ -9,7 +9,7 @@ export const Tab = ({
 }) => (
   <button
     className={`tab ${isActive ? "active" : ""}`}
-    onClick={() => setActive()}
+    onClick={setActive}
   >
     {label}
   </button>
