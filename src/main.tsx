@@ -7,6 +7,7 @@ import "./styles.css";
 import { Tab } from "./components/Tab/Tab";
 import { StrictMode, useState } from "react";
 import { RestaurantComponent } from "./components/Restaurant/Restaurant";
+import { Layout } from "./components/Layout/Layout";
 
 const rootElement = document.getElementById("root");
 if (!rootElement) {
@@ -18,11 +19,8 @@ const appRoot = createRoot(rootElement);
 const App = () => {
   const [activeId, setActiveId] = useState(0);
   return (
-    <div className="layout">
-      <Header>
-        <h1>Restaurants</h1>
-      </Header>
-      <div className="main">
+    <Layout>
+      <>
         <section className="tabs">
           {restaurants.map(({ name, id }, idx) => {
             return (
@@ -36,13 +34,14 @@ const App = () => {
           })}
         </section>
 
-        <RestaurantComponent
-          restaurantItem={restaurants[activeId]}
-        />
-      </div>
-      <Footer>Footer</Footer>
-    </div>
+        <RestaurantComponent restaurantItem={restaurants[activeId]} />
+      </>
+    </Layout>
   );
 };
 
-appRoot.render(<StrictMode><App /></StrictMode>);
+appRoot.render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);
