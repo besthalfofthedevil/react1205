@@ -8,6 +8,7 @@ import { Tab } from "./components/Tab/Tab";
 import { StrictMode, useState } from "react";
 import { RestaurantComponent } from "./components/Restaurant/Restaurant";
 import { Layout } from "./components/Layout/Layout";
+import { Restaurants } from "./components/Restaurants/Restaurants";
 
 const rootElement = document.getElementById("root");
 if (!rootElement) {
@@ -17,25 +18,9 @@ if (!rootElement) {
 const appRoot = createRoot(rootElement);
 
 const App = () => {
-  const [activeId, setActiveId] = useState(0);
   return (
     <Layout>
-      <>
-        <section className="tabs">
-          {restaurants.map(({ name, id }, idx) => {
-            return (
-              <Tab
-                key={id}
-                label={name}
-                isActive={idx === activeId}
-                setActive={() => setActiveId(idx)}
-              />
-            );
-          })}
-        </section>
-
-        <RestaurantComponent restaurantItem={restaurants[activeId]} />
-      </>
+      <Restaurants restaurants={restaurants} />
     </Layout>
   );
 };
