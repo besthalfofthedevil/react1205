@@ -1,4 +1,4 @@
-import type { JSX } from "react";
-export const Footer = ({ children }: { children: JSX.Element | string }) => {
+import type { PropsWithChildren } from "react";
+export const Footer = ({ children }: PropsWithChildren) => {
   return <div className="footer">{children}</div>;
 };
