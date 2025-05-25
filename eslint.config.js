@@ -25,13 +25,16 @@ export default tseslint.config(
       'react-refresh': reactRefresh,
     },
     rules: {
+      ...js.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
       ...react.configs.recommended.rules,
       ...react.configs['jsx-runtime'].rules,
+      "no-unused-vars": ["error", { varsIgnorePattern: "^[A-Z_]" }],
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
       ],
+      "react/prop-types": 0,
     },
   },
 )
