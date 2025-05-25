@@ -37,7 +37,6 @@ const App = () => {
         </section>
 
         <RestaurantComponent
-          key={activeId}
           restaurantItem={restaurants[activeId]}
         />
       </div>
