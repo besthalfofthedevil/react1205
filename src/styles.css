@@ -29,3 +29,9 @@ footer {
   background-color: #007bff;
   color: white;
 }
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
