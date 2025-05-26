@@ -1,28 +1,51 @@
+import { useReviewForm } from "../../hooks/useReviewForm";
 import { Counter } from "../Counter/counter";
 
 export const ReviewForm = () => {
+  const [
+    formState,
+    resetForm,
+    onUserNameChange,
+    onReviewChange,
+    incrementRating,
+    decrementRating,
+  ] = useReviewForm();
+  const { userName, review, rating } = formState;
   return (
     <form
       className="review-form"
       onSubmit={(e) => {
-        console.log(e)
         e.preventDefault();
+        resetForm();
       }}
     >
       <h3>Leave a Review</h3>
       <label>
         Your Name:
-        <input type="text" name="user" required />
+        <input
+          type="text"
+          name="user"
+          value={userName}
+          onChange={(e) => onUserNameChange(e?.target.value)}
+        />
       </label>
       <label>
         Review Text:
-        <textarea name="text" required />
+        <textarea
+          name="text"
+          value={review}
+          onChange={(e) => onReviewChange(e?.target.value)}
+        />
       </label>
       <label>
         Rating:
-        <Counter count={10} add={() => {}} substract={() => {}}></Counter>
+        <Counter
+          count={rating}
+          add={incrementRating}
+          substract={decrementRating}
+        ></Counter>
       </label>
-      <button type="submit">Submit Review</button>
+      <button type="submit">Clear</button>
     </form>
   );
 };
