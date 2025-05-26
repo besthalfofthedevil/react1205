@@ -23,14 +23,15 @@ export const Menu = ({ menu }: { menu: RestaurantMenuItem[] }) => {
     <>
       <h3>Menu</h3>
       <ul>
-        {menu.map((item) => (
-          <MenuListItem
+        {menu.map((item) => {
+          if (!item.name) return null;
+          return <MenuListItem
             name={item.name}
             price={item.price}
             ingredients={item.ingredients}
             key={item.id}
           />
-        ))}
+        })}
       </ul>
     </>
   );
