@@ -34,14 +34,7 @@ const formReducer = (state: FormState, action: FormAction) => {
   }
 };
 
-export const useReviewForm = (): [
-  FormState,
-  () => void,
-  (userName: string) => void,
-  (review: string) => void,
-  () => void,
-  () => void
-] => {
+export const useReviewForm = () => {
   const [formState, dispatch] = useReducer(formReducer, INITIAL_FORM_STATE);
 
   const resetForm = () => {
@@ -69,5 +62,5 @@ export const useReviewForm = (): [
     onReviewChange,
     incrementRating,
     decrementRating,
-  ];
+  ] as const;
 };

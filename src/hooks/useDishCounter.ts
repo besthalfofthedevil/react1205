@@ -3,9 +3,7 @@ import { useState } from "react";
 const MAX_DISH_COUNT = 5;
 const MIN_DISH_COUNT = 0;
 
-export const useDishCounter = (
-  initialCount: number
-): [count: number, () => void, () => void] => {
+export const useDishCounter = (initialCount: number) => {
   const [count, setCount] = useState(initialCount);
 
   const onIncrement = () => {
@@ -20,5 +18,5 @@ export const useDishCounter = (
     );
   };
 
-  return [count, onIncrement, onDecrement];
+  return [count, onIncrement, onDecrement] as const;
 };
