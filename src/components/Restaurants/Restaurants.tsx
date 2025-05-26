@@ -2,7 +2,6 @@ import { useState, type PropsWithChildren } from "react";
 import { RestaurantComponent } from "../Restaurant/Restaurant";
 import type { Restaurant } from "../../mocks/restaurants.mock";
 import { Tab } from "../Tab/Tab";
-import { ReviewForm } from "../ReviewForm/review-form";
 
 export const Restaurants = ({
   restaurants,
@@ -34,11 +33,10 @@ export const Restaurants = ({
       </section>
       {selectedRestaurant ? (
         <>
-        <RestaurantComponent
-          key={selectedRestaurant.id}
-          restaurantItem={selectedRestaurant}
-        />
-        <ReviewForm />
+          <RestaurantComponent
+            key={selectedRestaurant.id}
+            restaurantItem={selectedRestaurant}
+          />
         </>
       ) : (
         <p>Please select a restaurant to view details.</p>
