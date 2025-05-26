@@ -6,26 +6,29 @@ import { Tab } from "../Tab/Tab";
 export const Restaurants = ({
   restaurants,
 }: PropsWithChildren<{ restaurants: Restaurant[] }>) => {
-  const [activeId, setActiveId] = useState(0);
-  console.log('Restaurants rendered')
+  const [activeId, setActiveId] = useState(restaurants[0]?.id || null);
+  const selectedRestauran = restaurants.find(({ id }) => id === activeId);
 
   return (
     <>
       <section className="tabs">
-        {restaurants.map(({ name, id }, idx) => {
-            const isActive =  idx === activeId
+        {restaurants.map(({ name, id }) => {
+          const isActive = id === activeId;
           return (
             <Tab
               key={id}
               label={name}
               isActive={isActive}
-              setActive={() => !isActive && setActiveId(idx)}
+              setActive={() => !isActive && setActiveId(id)}
             />
           );
         })}
       </section>
-
-      <RestaurantComponent restaurantItem={restaurants[activeId]} />
+      {selectedRestauran ? (
+        <RestaurantComponent restaurantItem={selectedRestauran} />
+      ) : (
+        <p>Please select a restaurant to view details.</p>
+      )}
     </>
   );
 };
