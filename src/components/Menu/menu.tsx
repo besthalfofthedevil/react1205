@@ -1,19 +1,18 @@
 import type { JSX } from "react";
 import { useDishCounter } from "../../hooks/useDishCounter";
 import type { RestaurantMenuItem } from "../../mocks/restaurants.mock";
+import { Counter } from "../Counter/counter";
 
 export const MenuListItem = (
   menuItem: Omit<RestaurantMenuItem, "id">
 ): JSX.Element => {
-  const [count, add, remove] = useDishCounter(0); 
+  const [dishCount, addDish, removeDish] = useDishCounter(0);
   const { name, price, ingredients } = menuItem;
   return (
     <li>
       <div>
         {`${name} - $${price} (${ingredients.join(", ")})`}
-        <button onClick={remove}>-</button>
-        {count}
-        <button onClick={add}>+</button>
+        <Counter count={dishCount} add={addDish} substract={removeDish} />
       </div>
     </li>
   );
