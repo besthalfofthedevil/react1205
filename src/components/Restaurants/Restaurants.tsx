@@ -32,12 +32,10 @@ export const Restaurants = ({
         })}
       </section>
       {selectedRestaurant ? (
-        <>
           <RestaurantComponent
             key={selectedRestaurant.id}
             restaurantItem={selectedRestaurant}
           />
-        </>
       ) : (
         <p>Please select a restaurant to view details.</p>
       )}
