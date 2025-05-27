@@ -6,28 +6,14 @@ export const Counter = ({
   substract,
 }: {
   count: number;
-  add: () => void;
-  substract: () => void;
+  add: (e: any) => void;
+  substract: (e: any) => void;
 }): JSX.Element => {
   return (
-    <span>
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          substract();
-        }}
-      >
-        -
-      </button>
-      {count}
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          add();
-        }}
-      >
-        +
-      </button>
-    </span>
+    <div>
+      <button onClick={substract}>-</button>
+      <span>{count}</span>
+      <button onClick={add}>+</button>
+    </div>
   );
 };

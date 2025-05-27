@@ -41,8 +41,14 @@ export const ReviewForm = () => {
         Rating:
         <Counter
           count={rating}
-          add={incrementRating}
-          substract={decrementRating}
+          add={(e) => {
+            e.preventDefault();
+            incrementRating();
+          }}
+          substract={(e) => {
+            e.preventDefault();
+            decrementRating();
+          }}
         />
       </label>
       <button type="submit">Clear</button>
