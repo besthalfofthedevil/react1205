@@ -1,6 +1,10 @@
 import { createRoot } from "react-dom/client";
 import { restaurants } from "./mocks/restaurants.mock";
-import { RestaurantComponent } from "./components";
+
+import "./styles.css";
+import { StrictMode } from "react";
+import { Layout } from "./components/Layout/Layout";
+import { Restaurants } from "./components/Restaurants/Restaurants";
 
 const rootElement = document.getElementById("root");
 if (!rootElement) {
@@ -9,15 +13,16 @@ if (!rootElement) {
 
 const appRoot = createRoot(rootElement);
 
-const app = (
-  <div>
-    <h1>Restaurants</h1>
-    {restaurants.map((restaurant) => {
-      return (
-        <RestaurantComponent key={restaurant.id} restaurantItem={restaurant} />
-      );
-    })}
-  </div>
-);
+const App = () => {
+  return (
+    <Layout>
+      <Restaurants restaurants={restaurants} />
+    </Layout>
+  );
+};
 
-appRoot.render(app);
+appRoot.render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);

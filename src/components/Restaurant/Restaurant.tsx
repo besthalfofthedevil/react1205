@@ -3,13 +3,25 @@ import type {
   Restaurant,
   RestaurantMenuItem,
   RestaurantReviewItem,
-} from "./mocks/restaurants.mock";
+} from "../../mocks/restaurants.mock";
+import { useDishCounter } from "../../hooks/useDishCounter";
 
 export const MenuItemComponent = (
   menuItem: Omit<RestaurantMenuItem, "id">
 ): JSX.Element => {
+  const [count, add, remove] = useDishCounter(0); // Placeholder for useDishCounter
   const { name, price, ingredients } = menuItem;
-  return <li>{`${name} - $${price} (${ingredients.join(", ")})`}</li>;
+  return (
+    <li>
+      <div>
+        {`${name} - $${price} (${ingredients.join(", ")})`}
+        <button onClick={remove}>-</button>
+        {count}
+
+        <button onClick={add}>+</button>
+      </div>
+    </li>
+  );
 };
 
 export const ReviewItemComponent = (
