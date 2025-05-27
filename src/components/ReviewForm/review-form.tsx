@@ -43,7 +43,7 @@ export const ReviewForm = () => {
           count={rating}
           add={incrementRating}
           substract={decrementRating}
-        ></Counter>
+        />
       </label>
       <button type="submit">Clear</button>
     </form>
