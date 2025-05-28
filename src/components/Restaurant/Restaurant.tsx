@@ -30,9 +30,9 @@ export const RestaurantComponent = (props: {
       </section>
       <section className={styles.mainContent}>
         {hasMenu && <Menu menu={menu} />}
-        {/* {hasReviews && <Reviews reviews={reviews} />} */}
       </section>
       <section className={styles.mainContent}>
+        {hasReviews && <Reviews reviews={reviews} />}
         <ReviewForm />
       </section>
     </div>

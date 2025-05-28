@@ -1,0 +1,41 @@
+.reviewsContent {
+  padding: 0 2rem 2rem;
+  max-width: 800px; /* Constrain width for readability */
+  margin: 0 auto; /* Center the content */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.reviewCard {
+  background-color: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.reviewerName {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.reviewRating {
+  display: flex;
+  gap: 0.125rem; /* Smaller gap for review stars */
+}
+
+.reviewText {
+  font-size: 1rem;
+  color: var(--text-medium);
+  line-height: 1.5;
+}
