@@ -3,5 +3,6 @@
   background-color: red;
   border-radius: 4px;
   overflow: hidden;
-  position: fixed;
+  position: absolute;
+  top: 0;
 }

@@ -3,12 +3,6 @@
   flex-direction: column;
 }
 
-.layout > header {
-  flex: 0 0 auto;
-  background-color: #f8f9fa;
-  border: 1px solid black;
-  min-height: 5em;
-}
 .layout > main {
   flex: 1 0 auto;
 }

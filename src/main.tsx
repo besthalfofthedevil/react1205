@@ -1,10 +1,10 @@
 import { createRoot } from "react-dom/client";
-import { restaurants } from "./mocks/restaurants.mock";
+import { restaurants as  restaurantsData } from "./mocks/restaurants.mock";
 
 import "./styles.css";
 import { StrictMode } from "react";
 import { Layout } from "./components/Layout/Layout";
-import { Restaurants } from "./components/Restaurants/Restaurants";
+import { Restaurants } from "./components/Restaurants/restaurants";
 
 const rootElement = document.getElementById("root");
 if (!rootElement) {
@@ -16,7 +16,7 @@ const appRoot = createRoot(rootElement);
 const App = () => {
   return (
     <Layout>
-      <Restaurants restaurants={restaurants} />
+      <Restaurants restaurants={restaurantsData} />
     </Layout>
   );
 };
