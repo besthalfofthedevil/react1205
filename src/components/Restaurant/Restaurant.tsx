@@ -3,6 +3,7 @@ import type { Restaurant } from "../../mocks/restaurants.mock";
 import { Menu } from "../Menu/menu";
 import { Reviews } from "../Review/review";
 import { ReviewForm } from "../ReviewForm/review-form";
+import styles from "./restaurant.module.css";
 
 export const RestaurantComponent = (props: {
   restaurantItem: Restaurant;
@@ -15,10 +16,24 @@ export const RestaurantComponent = (props: {
   const hasReviews = Array.isArray(reviews) && reviews.length > 0;
   return (
     <div>
-      <h2>{name}</h2>
+      <section className={styles.restaurantBanner}>
+        <h1 className={styles.restaurantTitle}>{name}</h1>
+        <p className={styles.restaurantCuisine}>pizza, sushi, vegan</p>
+        <div className={styles.rating}>
+          <span className={styles.star}>★</span>
+          <span className={styles.star}>★</span>
+          <span className={styles.star}>★</span>
+          <span className={styles.star}>★</span>
+          <span className={styles.star}>☆</span>
+          <span className={styles.ratingCount}>(2)</span>
+        </div>
+      </section>
+      <section className={styles.mainContent}>
       {hasMenu && <Menu menu={menu} />}
-      {hasReviews && <Reviews reviews={reviews} />}
-      <ReviewForm />
+      {/* {hasReviews && <Reviews reviews={reviews} />} */}
+      {/* <ReviewForm /> */}
+      </section>
+
     </div>
   );
 };
