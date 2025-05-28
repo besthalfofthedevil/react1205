@@ -1,0 +1,32 @@
+.quantityControl {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.quantityBtn {
+  background-color: var(--primary-orange);
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.quantityBtn:hover {
+  background-color: #d97706; /* Slightly darker orange on hover */
+}
+
+.quantityDisplay {
+  font-size: 1.125rem;
+  font-weight: 600;
+  min-width: 1.5rem;
+  text-align: center;
+}
