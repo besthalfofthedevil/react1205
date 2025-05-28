@@ -29,11 +29,12 @@ export const RestaurantComponent = (props: {
         </div>
       </section>
       <section className={styles.mainContent}>
-      {hasMenu && <Menu menu={menu} />}
-      {/* {hasReviews && <Reviews reviews={reviews} />} */}
-      {/* <ReviewForm /> */}
+        {hasMenu && <Menu menu={menu} />}
+        {/* {hasReviews && <Reviews reviews={reviews} />} */}
       </section>
-
+      <section className={styles.mainContent}>
+        <ReviewForm />
+      </section>
     </div>
   );
 };

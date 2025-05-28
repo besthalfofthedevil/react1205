@@ -1,5 +1,62 @@
-.review-form {
+.reviewForm {
+  background-color: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  margin-bottom: 1em;
+}
+.reviewForm p {
+  display: flex;
+}
+
+.formTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  resize: vertical; /* Allow vertical resizing */
+  box-sizing: border-box; /* Include padding in width */
+  margin-bottom: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+textarea:focus {
+  border-color: var(--primary-orange);
+}
+
+.formLabel {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.publishBtn {
+  background-color: transparent;
+  color: var(--primary-orange);
+  border: 1px solid var(--primary-orange);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.publishBtn:hover {
+  background-color: var(--primary-orange);
+  color: #fff;
+  border-color: var(--primary-orange);
 }

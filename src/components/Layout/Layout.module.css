@@ -9,6 +9,6 @@
 .layout > footer {
   flex: 0 0 auto;
   border: 1px solid black;
-  min-height: 5em;
+  min-height: 2em;
 }
 
