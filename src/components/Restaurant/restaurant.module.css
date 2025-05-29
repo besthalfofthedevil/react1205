@@ -37,9 +37,17 @@
   color: rgba(255, 255, 255, 0.8);
 }
 
-.mainContent {
+.content {
   display: flex;
+  flex-direction: row;
   gap: 2rem;
   padding: 0 2rem 2rem;
-  align-items: flex-start; /* Align items to the top */
+
+}
+
+.contentColumn {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
 }

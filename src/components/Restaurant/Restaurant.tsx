@@ -22,12 +22,16 @@ export const RestaurantComponent = (props: {
         <p className={styles.restaurantCuisine}>pizza, sushi, vegan</p>
         <StarsBar rating={4.5} totalStars={5} />
       </section>
-      <section className={styles.mainContent}>
+      <section className={styles.content}>
         {hasMenu && <Menu menu={menu} />}
       </section>
-      <section className={styles.mainContent}>
-        {hasReviews && <Reviews reviews={reviews} />}
-        <ReviewForm />
+      <section className={styles.content}>
+        <div className={styles.contentColumn}>
+          {hasReviews && <Reviews reviews={reviews} />}
+        </div>
+        <div className={styles.contentColumn}>
+          <ReviewForm />
+        </div>
       </section>
     </div>
   );
