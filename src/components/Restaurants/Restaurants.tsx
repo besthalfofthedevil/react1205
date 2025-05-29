@@ -33,12 +33,12 @@ export const Restaurants = ({
         })}
       </section>
       {selectedRestaurant ? (
-        // Array(10).fill(
+        [...Array(10)].map((_, idx)=> 
           <RestaurantComponent
-            key={selectedRestaurant.id}
+            key={selectedRestaurant.id + idx}
             restaurantItem={selectedRestaurant}
           />
-        // )
+        )
       ) : (
         <p>Please select a restaurant to view details.</p>
       )}
