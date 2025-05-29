@@ -11,8 +11,7 @@ export const Tab = ({
   setActive?: () => void;
 }) => (
   <button
-    className={classNames({
-      [styles.tab]: true,
+    className={classNames(styles.tab, {
       [styles.active]: isActive,
     })}
     onClick={setActive}
