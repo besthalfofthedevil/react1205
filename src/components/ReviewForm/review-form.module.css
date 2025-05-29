@@ -6,8 +6,9 @@
   display: flex;
   flex-direction: column;
 }
-.reviewForm p {
+.formGroup {
   display: flex;
+  flex-direction: column;
 }
 
 .formTitle {
@@ -16,7 +17,7 @@
   margin-bottom: 1rem;
 }
 
-textarea {
+.reviewForm textarea {
   width: 100%;
   min-height: 100px;
   padding: 0.75rem;
@@ -25,6 +26,18 @@ textarea {
   font-family: "Inter", sans-serif;
   font-size: 1rem;
   resize: vertical; /* Allow vertical resizing */
+  box-sizing: border-box; /* Include padding in width */
+  margin-bottom: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+.reviewForm input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
   box-sizing: border-box; /* Include padding in width */
   margin-bottom: 1rem;
   outline: none;

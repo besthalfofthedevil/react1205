@@ -22,19 +22,17 @@ export const ReviewListItem = (
 export const Reviews = ({ reviews }: { reviews: RestaurantReviewItem[] }) => {
   return (
     <div className={styles.reviewsContent}>
-      <h3>Reviews</h3>
-      <section className={styles.existingReviews}>
-        <ul>
-          {reviews.map((item) => (
-            <ReviewListItem
-              user={item.user}
-              text={item.text}
-              rating={item.rating}
-              key={item.id}
-            />
-          ))}
-        </ul>
-      </section>
+      <h3 className={styles.title}>Reviews</h3>
+      <ul className={styles.existingReviews}>
+        {reviews.map((item) => (
+          <ReviewListItem
+            user={item.user}
+            text={item.text}
+            rating={item.rating}
+            key={item.id}
+          />
+        ))}
+      </ul>
     </div>
   );
 };

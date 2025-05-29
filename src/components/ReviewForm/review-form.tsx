@@ -21,7 +21,7 @@ export const ReviewForm = () => {
       }}
     >
       <h3 className={styles.formTitle}>Leave your review</h3>
-      <p>
+      <div className={styles.formGroup}>
         <label className={styles.formLabel}>Your Name:</label>
         <input
           type="text"
@@ -29,8 +29,8 @@ export const ReviewForm = () => {
           value={userName}
           onChange={(e) => onUserNameChange(e?.target.value)}
         />
-      </p>
-      <p>
+      </div>
+      <div className={styles.formGroup}>
         <label className={styles.formLabel}>Review Text:</label>
         <textarea
           name="text"
@@ -38,8 +38,8 @@ export const ReviewForm = () => {
           value={review}
           onChange={(e) => onReviewChange(e?.target.value)}
         />
-      </p>
-      <p>
+      </div>
+      <div className={styles.formGroup}>
         <label className={styles.formLabel}>Rating:</label>
         <Counter
           count={rating}
@@ -52,7 +52,7 @@ export const ReviewForm = () => {
             decrementRating();
           }}
         />
-      </p>
+      </div>
       <button className={styles.publishBtn} type="submit">
         PUBLISH REVIEW
       </button>
