@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./progress-bar.module.css";
 export const ProgressBar = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
+  
   useEffect(() => {
     const scrollHandler = () => {
       setScrollProgress(
@@ -18,7 +19,7 @@ export const ProgressBar = () => {
       removeEventListener("resize", scrollHandler);
       removeEventListener("scroll", scrollHandler);
     };
-  }, [scrollProgress]);
+  });
 
   return (
     <div
