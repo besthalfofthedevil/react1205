@@ -1,5 +1,6 @@
 import { useReviewForm } from "../../hooks/useReviewForm";
 import { Counter } from "../Counter/counter";
+import styles from "./review-form.module.css";
 
 export const ReviewForm = () => {
   const [
@@ -13,32 +14,33 @@ export const ReviewForm = () => {
   const { userName, review, rating } = formState;
   return (
     <form
-      className="review-form"
+      className={styles.reviewForm}
       onSubmit={(e) => {
         e.preventDefault();
         resetForm();
       }}
     >
-      <h3>Leave a Review</h3>
-      <label>
-        Your Name:
+      <h3 className={styles.formTitle}>Leave your review</h3>
+      <div className={styles.formGroup}>
+        <label className={styles.formLabel}>Your Name:</label>
         <input
           type="text"
           name="user"
           value={userName}
           onChange={(e) => onUserNameChange(e?.target.value)}
         />
-      </label>
-      <label>
-        Review Text:
+      </div>
+      <div className={styles.formGroup}>
+        <label className={styles.formLabel}>Review Text:</label>
         <textarea
           name="text"
+          placeholder="Write your review here..."
           value={review}
           onChange={(e) => onReviewChange(e?.target.value)}
         />
-      </label>
-      <label>
-        Rating:
+      </div>
+      <div className={styles.formGroup}>
+        <label className={styles.formLabel}>Rating:</label>
         <Counter
           count={rating}
           add={(e) => {
@@ -50,8 +52,10 @@ export const ReviewForm = () => {
             decrementRating();
           }}
         />
-      </label>
-      <button type="submit">Clear</button>
+      </div>
+      <button className={styles.publishBtn} type="submit">
+        PUBLISH REVIEW
+      </button>
     </form>
   );
 };

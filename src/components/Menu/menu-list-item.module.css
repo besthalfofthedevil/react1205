@@ -1,0 +1,33 @@
+.menuItem {
+  background-color: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.itemDetails {
+  flex-grow: 1;
+}
+
+.itemName {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.itemDescription {
+  font-size: 0.9rem;
+  color: var(--text-medium);
+  margin-bottom: 0.5rem;
+}
+
+.itemPrice {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary-orange);
+}

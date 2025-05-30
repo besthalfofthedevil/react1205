@@ -1,0 +1,57 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  min-height: 2em;
+}
+
+.headerLeft,
+.headerRight {
+  display: flex;
+  align-items: center;
+}
+
+.headerLeft a {
+  font-size: 1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.headerLeft a::before {
+  content: "←";
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  color: var(--text-dark);
+}
+
+.logo span {
+  color: var(--primary-orange);
+}
+
+.currencySelector {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.currencySelector span {
+  color: var(--text-light);
+  margin: 0 0.5rem;
+}
+
+.currencySelector .active {
+  color: var(--primary-orange);
+}

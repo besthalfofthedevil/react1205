@@ -1,11 +1,10 @@
 import type { RestaurantMenuItem } from "../../mocks/restaurants.mock";
 import { MenuListItem } from "./menu-list-item";
-
+import styles from "./menu.module.css";
 
 export const Menu = ({ menu }: { menu: RestaurantMenuItem[] }) => {
   return (
-    <>
-      <h3>Menu</h3>
+    <section className={styles.menu}>
       <ul>
         {menu.map((item) => {
           if (!item.name) return null;
@@ -17,6 +16,6 @@ export const Menu = ({ menu }: { menu: RestaurantMenuItem[] }) => {
           />
         })}
       </ul>
-    </>
+    </section>
   );
 };

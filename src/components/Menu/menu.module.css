@@ -1,0 +1,7 @@
+.menu {
+  flex: 2; /* Takes more space */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 0; /* Allows shrinking */
+}

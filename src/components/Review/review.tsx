@@ -1,4 +1,6 @@
 import type { RestaurantReviewItem } from "../../mocks/restaurants.mock";
+import { StarsBar } from "../StarsBar/stars-bar";
+import styles from "./review.module.css";
 
 export const ReviewListItem = (
   reviewItem: Omit<RestaurantReviewItem, "id">
@@ -6,17 +8,22 @@ export const ReviewListItem = (
   const { user, text, rating } = reviewItem;
   return (
     <li>
-      <strong>{user}</strong>: {text} ({rating} stars)
+      <div className={styles.reviewCard}>
+        <div className={styles.reviewHeader}>
+          <h3 className={styles.reviewerName}>{user}</h3>
+          <StarsBar rating={rating} totalStars={5} />
+        </div>
+        <p className={styles.reviewText}>{text}</p>
+      </div>
     </li>
   );
 };
 
-
 export const Reviews = ({ reviews }: { reviews: RestaurantReviewItem[] }) => {
   return (
-    <>
-      <h3>Reviews</h3>
-      <ul>
+    <div className={styles.reviewsContent}>
+      <h3 className={styles.title}>Reviews</h3>
+      <ul className={styles.existingReviews}>
         {reviews.map((item) => (
           <ReviewListItem
             user={item.user}
@@ -26,6 +33,6 @@ export const Reviews = ({ reviews }: { reviews: RestaurantReviewItem[] }) => {
           />
         ))}
       </ul>
-    </>
+    </div>
   );
 };

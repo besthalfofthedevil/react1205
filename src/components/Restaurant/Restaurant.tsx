@@ -3,6 +3,8 @@ import type { Restaurant } from "../../mocks/restaurants.mock";
 import { Menu } from "../Menu/menu";
 import { Reviews } from "../Review/review";
 import { ReviewForm } from "../ReviewForm/review-form";
+import styles from "./restaurant.module.css";
+import { StarsBar } from "../StarsBar/stars-bar";
 
 export const RestaurantComponent = (props: {
   restaurantItem: Restaurant;
@@ -15,10 +17,22 @@ export const RestaurantComponent = (props: {
   const hasReviews = Array.isArray(reviews) && reviews.length > 0;
   return (
     <div>
-      <h2>{name}</h2>
-      {hasMenu && <Menu menu={menu} />}
-      {hasReviews && <Reviews reviews={reviews} />}
-      <ReviewForm />
+      <section className={styles.restaurantBanner}>
+        <h1 className={styles.restaurantTitle}>{name}</h1>
+        <p className={styles.restaurantCuisine}>pizza, sushi, vegan</p>
+        <StarsBar rating={4.5} totalStars={5} />
+      </section>
+      <section className={styles.content}>
+        {hasMenu && <Menu menu={menu} />}
+      </section>
+      <section className={styles.content}>
+        <div className={styles.contentColumn}>
+          {hasReviews && <Reviews reviews={reviews} />}
+        </div>
+        <div className={styles.contentColumn}>
+          <ReviewForm />
+        </div>
+      </section>
     </div>
   );
 };

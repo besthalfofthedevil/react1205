@@ -1,7 +1,8 @@
 import { useState, type PropsWithChildren } from "react";
-import { RestaurantComponent } from "../Restaurant/Restaurant";
+import { RestaurantComponent } from "../Restaurant/restaurant";
 import type { Restaurant } from "../../mocks/restaurants.mock";
 import { Tab } from "../Tab/Tab";
+import styles from "./restaurants.module.css";
 
 export const Restaurants = ({
   restaurants,
@@ -15,7 +16,7 @@ export const Restaurants = ({
 
   return (
     <>
-      <section className="tabs">
+      <section className={styles.tabs}>
         {restaurants.map(({ name, id }) => {
           const isActive = id === activeRestaurantId;
           if (!name) {
@@ -32,10 +33,12 @@ export const Restaurants = ({
         })}
       </section>
       {selectedRestaurant ? (
+        [...Array(10)].map((_, idx)=> 
           <RestaurantComponent
-            key={selectedRestaurant.id}
+            key={selectedRestaurant.id + idx}
             restaurantItem={selectedRestaurant}
           />
+        )
       ) : (
         <p>Please select a restaurant to view details.</p>
       )}

@@ -1,0 +1,14 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.layout > main {
+  flex: 1 0 auto;
+}
+.layout > footer {
+  flex: 0 0 auto;
+  border: 1px solid black;
+  min-height: 2em;
+}
+

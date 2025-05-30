@@ -1,3 +1,6 @@
+import classNames from "classnames";
+import styles from "./Tab.module.css";
+
 export const Tab = ({
   label,
   isActive,
@@ -8,7 +11,9 @@ export const Tab = ({
   setActive?: () => void;
 }) => (
   <button
-    className={`tab ${isActive ? "active" : ""}`}
+    className={classNames(styles.tab, {
+      [styles.active]: isActive,
+    })}
     onClick={setActive}
   >
     {label}

@@ -1,0 +1,53 @@
+.restaurantBanner {
+  background-image: url("https://via.placeholder.com/1440x400/808080/FFFFFF?text=Restaurant+Image"); /* Placeholder for restraunt image */
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  padding: 4rem 2rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.restaurantBanner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+  z-index: -1;
+}
+
+.restaurantTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.restaurantCuisine {
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+}
+
+.ratingCount {
+  font-size: 1rem;
+  margin-left: 0.25rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  padding: 0 2rem 2rem;
+
+}
+
+.contentColumn {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
