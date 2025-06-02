@@ -13,6 +13,5 @@ export const UserContextProvider = ({ children }: React.PropsWithChildren) => {
     );
   };
 
-  const context = [user, toggleAuth] as const;
-  return <UserContext value={context}>{children}</UserContext>;
+  return <UserContext value={[user, toggleAuth]}>{children}</UserContext>;
 };

@@ -12,6 +12,5 @@ export const ThemeContextProvider = ({ children }: React.PropsWithChildren) => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
-  const context = [theme, toggleTheme] as const;
-  return <ThemeContext value={context}>{children}</ThemeContext>;
+  return <ThemeContext value={[theme, toggleTheme]}>{children}</ThemeContext>;
 };
