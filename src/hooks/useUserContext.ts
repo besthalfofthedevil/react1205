@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { UserContext } from "../providers/UserContext/UserContext";
+import { UserContext, type UserContextType } from "../providers/UserContext/UserContext";
 
-export const useUserContext = () => {
+export const useUserContext = (): UserContextType => {
   const [user, toggleAuth] = useContext(UserContext);
   if (user === undefined) {
     throw new Error(
