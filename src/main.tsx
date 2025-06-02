@@ -6,6 +6,7 @@ import { StrictMode } from "react";
 import { Layout } from "./components/Layout/Layout";
 import { Restaurants } from "./components/Restaurants/restaurants";
 import { ThemeContextProvider } from "./providers/ThemeProvider/ThemeProvider";
+import { UserContextProvider } from "./providers/UserContext/UserContextProvider";
 
 const rootElement = document.getElementById("root");
 if (!rootElement) {
@@ -17,9 +18,11 @@ const appRoot = createRoot(rootElement);
 const App = () => {
   return (
     <ThemeContextProvider>
-      <Layout>
-        <Restaurants restaurants={restaurantsData} />
-      </Layout>
+      <UserContextProvider>
+        <Layout>
+          <Restaurants restaurants={restaurantsData} />
+        </Layout>
+      </UserContextProvider>
     </ThemeContextProvider>
   );
 };

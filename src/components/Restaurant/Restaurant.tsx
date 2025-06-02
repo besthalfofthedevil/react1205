@@ -5,10 +5,12 @@ import { Reviews } from "../Review/review";
 import { ReviewForm } from "../ReviewForm/review-form";
 import styles from "./restaurant.module.css";
 import { StarsBar } from "../StarsBar/stars-bar";
+import { useUserContext } from "../../hooks/useUserContext";
 
 export const RestaurantComponent = (props: {
   restaurantItem: Restaurant;
 }): JSX.Element => {
+  const [user] = useUserContext();
   const { name, menu, reviews } = props.restaurantItem;
   if (!name) {
     return <p>No restaurant name provided</p>;
@@ -30,7 +32,7 @@ export const RestaurantComponent = (props: {
           {hasReviews && <Reviews reviews={reviews} />}
         </div>
         <div className={styles.contentColumn}>
-          <ReviewForm />
+          {user.isAutenticated && <ReviewForm />}
         </div>
       </section>
     </div>
