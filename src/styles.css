@@ -123,6 +123,8 @@ table {
   border-spacing: 0;
 }
 
+
+
 :root {
   --primary-orange: #f59e0b; /* A warm orange for accents */
   --button-orange: #ea580c; /* Slightly darker orange for checkout button */
@@ -135,11 +137,21 @@ table {
   --star-gold: #fcd34d; /* Gold for stars */
 }
 
+[data-theme="light"] {
+  --bg-color: white;
+  --text-color: black;
+}
+
+[data-theme="dark"] {
+  --bg-color: black;
+  --text-color: var(--text-light);
+}
+
 body {
   font-family: "Inter", sans-serif;
   margin: 0;
-  background-color: #f8f8f8;
-  color: var(--text-dark);
+  background-color: var(--bg-color);
+  color: var(--text-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

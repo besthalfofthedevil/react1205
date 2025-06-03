@@ -3,11 +3,13 @@ import { useDishCounter } from "../../hooks/useDishCounter";
 import type { RestaurantMenuItem } from "../../mocks/restaurants.mock";
 import { Counter } from "../Counter/counter";
 import styles from "./menu-list-item.module.css";
+import { useUserContext } from "../../hooks/useUserContext";
 
 export const MenuListItem = (
   menuItem: Omit<RestaurantMenuItem, "id">
 ): JSX.Element => {
   const [dishCount, addDish, removeDish] = useDishCounter(0);
+  const [user] = useUserContext();
   const { name, price, ingredients } = menuItem;
   return (
     <li>
@@ -19,7 +21,9 @@ export const MenuListItem = (
           )}`}</p>
           <p className={styles.itemPrice}>{`$${price}`} </p>
         </div>
-        <Counter count={dishCount} add={addDish} substract={removeDish} />
+        {user.isAutenticated && (
+          <Counter count={dishCount} add={addDish} substract={removeDish} />
+        )}
       </div>
     </li>
   );

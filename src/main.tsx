@@ -1,10 +1,12 @@
 import { createRoot } from "react-dom/client";
-import { restaurants as  restaurantsData } from "./mocks/restaurants.mock";
+import { restaurants as restaurantsData } from "./mocks/restaurants.mock";
 
 import "./styles.css";
 import { StrictMode } from "react";
 import { Layout } from "./components/Layout/Layout";
 import { Restaurants } from "./components/Restaurants/restaurants";
+import { ThemeContextProvider } from "./providers/ThemeProvider/ThemeProvider";
+import { UserContextProvider } from "./providers/UserContext/UserContextProvider";
 
 const rootElement = document.getElementById("root");
 if (!rootElement) {
@@ -15,9 +17,13 @@ const appRoot = createRoot(rootElement);
 
 const App = () => {
   return (
-    <Layout>
-      <Restaurants restaurants={restaurantsData} />
-    </Layout>
+    <ThemeContextProvider>
+      <UserContextProvider>
+        <Layout>
+          <Restaurants restaurants={restaurantsData} />
+        </Layout>
+      </UserContextProvider>
+    </ThemeContextProvider>
   );
 };
 
