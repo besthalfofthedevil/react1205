@@ -7,6 +7,8 @@ import { Layout } from "./components/Layout/Layout";
 import { Restaurants } from "./components/Restaurants/restaurants";
 import { ThemeContextProvider } from "./providers/ThemeProvider/ThemeProvider";
 import { UserContextProvider } from "./providers/UserContext/UserContextProvider";
+import { store } from "./store";
+import { Provider } from "react-redux";
 
 const rootElement = document.getElementById("root");
 if (!rootElement) {
@@ -17,13 +19,15 @@ const appRoot = createRoot(rootElement);
 
 const App = () => {
   return (
-    <ThemeContextProvider>
-      <UserContextProvider>
-        <Layout>
-          <Restaurants restaurants={restaurantsData} />
-        </Layout>
-      </UserContextProvider>
-    </ThemeContextProvider>
+    <Provider store={store}>
+      <ThemeContextProvider>
+        <UserContextProvider>
+          <Layout>
+            <Restaurants restaurants={restaurantsData} />
+          </Layout>
+        </UserContextProvider>
+      </ThemeContextProvider>
+    </Provider>
   );
 };
 
