@@ -16,12 +16,14 @@ export const RestaurantComponent = (props: {
   const [user] = useUserContext();
   const { restaurantId } = props;
   const { name, menu, reviews } =
-    useSelector((state: RootState) => selectRestaurantById(state, restaurantId)) || {};
+    useSelector((state: RootState) =>
+      selectRestaurantById(state, restaurantId)
+    ) || {};
   if (!name) {
     return <p>No restaurant name provided</p>;
   }
-  // const hasMenu = Array.isArray(menu) && menu.length > 0;
-  // const hasReviews = Array.isArray(reviews) && reviews.length > 0;
+  const hasMenu = Array.isArray(menu) && menu.length > 0;
+  const hasReviews = Array.isArray(reviews) && reviews.length > 0;
   return (
     <div>
       <section className={styles.restaurantBanner}>
@@ -29,7 +31,7 @@ export const RestaurantComponent = (props: {
         <p className={styles.restaurantCuisine}>pizza, sushi, vegan</p>
         <StarsBar rating={4.5} totalStars={5} />
       </section>
-      {/* <section className={styles.content}>
+      <section className={styles.content}>
         {hasMenu && <Menu menu={menu} />}
       </section>
       <section className={styles.content}>
@@ -39,7 +41,7 @@ export const RestaurantComponent = (props: {
         <div className={styles.contentColumn}>
           {user.isAutenticated && <ReviewForm />}
         </div>
-      </section> */}
+      </section>
     </div>
   );
 };

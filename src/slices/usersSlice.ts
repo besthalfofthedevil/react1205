@@ -20,10 +20,10 @@ export const usersSlice = createSlice({
   initialState,
   reducers: {},
   selectors: {
-    selectRestaurantIds: (store: UsersStore) => store.ids,
-    selectRestaurantById: (store: UsersStore, id: string) => store.users[id],
+    selectUserIds: (store: UsersStore) => store.ids,
+    selectUserById: (store: UsersStore, id: string) => store.users[id],
   },
 });
 
-export const { selectRestaurantIds, selectRestaurantById } =
+export const { selectUserIds, selectUserById } =
   usersSlice.selectors;
