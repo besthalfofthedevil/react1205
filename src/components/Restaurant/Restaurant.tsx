@@ -1,5 +1,4 @@
 import type { JSX } from "react";
-import type { Restaurant } from "../../mocks/restaurants.mock";
 import { Menu } from "../Menu/menu";
 import { Reviews } from "../Review/review";
 import { ReviewForm } from "../ReviewForm/review-form";
@@ -11,10 +10,10 @@ import { useSelector } from "react-redux";
 import type { RootState } from "../../store";
 
 export const RestaurantComponent = (props: {
-  restaurantId: string;
+  id: string;
 }): JSX.Element => {
   const [user] = useUserContext();
-  const { restaurantId } = props;
+  const { id: restaurantId } = props;
   const { name, menu, reviews } =
     useSelector((state: RootState) =>
       selectRestaurantById(state, restaurantId)

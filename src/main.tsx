@@ -1,5 +1,4 @@
 import { createRoot } from "react-dom/client";
-import { restaurants as restaurantsData } from "./mocks/restaurants.mock";
 
 import "./styles.css";
 import { StrictMode } from "react";
@@ -23,7 +22,7 @@ const App = () => {
       <ThemeContextProvider>
         <UserContextProvider>
           <Layout>
-            <Restaurants restaurants={restaurantsData} />
+            <Restaurants/>
           </Layout>
         </UserContextProvider>
       </ThemeContextProvider>
