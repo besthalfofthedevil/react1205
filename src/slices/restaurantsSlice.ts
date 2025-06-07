@@ -4,12 +4,12 @@ import {
   type Restaurant,
 } from "../mocks/normalized-mock";
 
-export interface RestaurantState {
+export interface RestaurantStore {
   ids: string[];
   restaurants: Record<string, Restaurant>;
 }
 
-const initialState: RestaurantState = {
+const initialState: RestaurantStore = {
   ids: normalizedRestaurants.map(({ id }) => id),
   restaurants: normalizedRestaurants.reduce((acc, restraunt) => {
     acc[restraunt.id] = restraunt;
@@ -19,12 +19,12 @@ const initialState: RestaurantState = {
 };
 
 export const restaurantSlice = createSlice({
-  name: "restaurantSlice",
+  name: "restaurantsSlice",
   initialState,
   reducers: {},
   selectors: {
-    selectRestaurantIds: (state: RestaurantState) => state.ids,
-    selectRestaurantById: (state: RestaurantState, id: string) =>
+    selectRestaurantIds: (state: RestaurantStore) => state.ids,
+    selectRestaurantById: (state: RestaurantStore, id: string) =>
       state.restaurants[id],
   },
 });

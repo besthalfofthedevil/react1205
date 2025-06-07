@@ -1,4 +1,3 @@
-
 export type Restaurant = {
   name: string;
   id: string;
@@ -57,6 +56,12 @@ export const normalizedRestaurants: Restaurant[] = [
   },
 ];
 
+export type Dish = {
+  name: string;
+  id: string;
+  price: number;
+  ingredients: string[];
+};
 export const normalizedDishes = [
   {
     id: "d75f762a-eadd-49be-8918-ed0daa8dd024",
@@ -120,6 +125,12 @@ export const normalizedDishes = [
   },
 ];
 
+export type Review = {
+  userId: string;
+  id: string;
+  text: string;
+  rating: number;
+};
 export const normalizedReviews = [
   {
     id: "5909796d-5030-4e36-adec-68b8f9ec2d96",
@@ -171,6 +182,10 @@ export const normalizedReviews = [
   },
 ];
 
+export type User = {
+  id: string;
+  name: string;
+};
 export const normalizedUsers = [
   {
     id: "a304959a-76c0-4b34-954a-b38dbf310360",
