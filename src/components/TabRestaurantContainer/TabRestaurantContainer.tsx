@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
-import { Tab } from "./Tab";
+import { Tab } from "../Tab/Tab";
 import { selectRestaurantById } from "../../slices/restaurantsSlice";
 import type { RootState } from "../../store";
 
 
-export const TabContainer = ({
+export const TabRestaurantContainer = ({
   id,
   isActive,
   setActive = () => {},
