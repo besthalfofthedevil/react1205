@@ -1,6 +1,6 @@
 import type { JSX } from "react";
 import { Menu } from "../Menu/menu";
-import { Reviews } from "../Review/review";
+import { Reviews } from "../Review/Reviews";
 import { ReviewForm } from "../ReviewForm/review-form";
 import styles from "./restaurant.module.css";
 import { StarsBar } from "../StarsBar/stars-bar";

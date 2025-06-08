@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { StarsBar } from "../StarsBar/stars-bar";
-import styles from "./review.module.css";
+import styles from "./ReviewListItem.module.css";
 import type { RootState } from "../../store";
 import { selectReviewById } from "../../slices/reviewsSlice";
 import { selectUserById } from "../../slices/usersSlice";
@@ -21,18 +21,5 @@ export const ReviewListItem = (props: { id: string }) => {
         <p className={styles.reviewText}>{text}</p>
       </div>
     </li>
-  );
-};
-
-export const Reviews = ({ reviews }: { reviews: string[] }) => {
-  return (
-    <div className={styles.reviewsContent}>
-      <h3 className={styles.title}>Reviews</h3>
-      <ul className={styles.existingReviews}>
-        {reviews.map((reviewId) => (
-          <ReviewListItem key={reviewId} id={reviewId} />
-        ))}
-      </ul>
-    </div>
   );
 };

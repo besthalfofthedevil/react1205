@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { Tab } from "../Tab/Tab";
 import styles from "./restaurants.module.css";
-import { selectRestaurantById, selectRestaurantIds } from "../../slices/restaurantsSlice";
+import { selectRestaurantIds } from "../../slices/restaurantsSlice";
 import { useSelector } from "react-redux";
 import { RestaurantComponent } from "../Restaurant/Restaurant";
-import { TabContainer } from "../Tab/TabContainer";
+import { TabRestaurantContainer } from "../TabRestaurantContainer/TabRestaurantContainer";
 
 export const Restaurants = () => {
   const restrauntIds = useSelector(selectRestaurantIds);
@@ -17,10 +16,9 @@ export const Restaurants = () => {
       <section className={styles.tabs}>
         {restrauntIds.map((id) => {
           const isActive = id === activeRestaurantId;
-   
 
           return (
-            <TabContainer
+            <TabRestaurantContainer
               key={id}
               id={id}
               isActive={isActive}
