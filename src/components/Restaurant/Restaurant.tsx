@@ -1,17 +1,23 @@
 import type { JSX } from "react";
-import type { Restaurant } from "../../mocks/restaurants.mock";
 import { Menu } from "../Menu/menu";
-import { Reviews } from "../Review/review";
+import { Reviews } from "../Review/Reviews";
 import { ReviewForm } from "../ReviewForm/review-form";
 import styles from "./restaurant.module.css";
 import { StarsBar } from "../StarsBar/stars-bar";
 import { useUserContext } from "../../hooks/useUserContext";
+import { selectRestaurantById } from "../../slices/restaurantsSlice";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../store";
 
 export const RestaurantComponent = (props: {
-  restaurantItem: Restaurant;
+  id: string;
 }): JSX.Element => {
   const [user] = useUserContext();
-  const { name, menu, reviews } = props.restaurantItem;
+  const { id: restaurantId } = props;
+  const { name, menu, reviews } =
+    useSelector((state: RootState) =>
+      selectRestaurantById(state, restaurantId)
+    ) || {};
   if (!name) {
     return <p>No restaurant name provided</p>;
   }

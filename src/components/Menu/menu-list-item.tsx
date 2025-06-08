@@ -1,15 +1,23 @@
 import type { JSX } from "react";
 import { useDishCounter } from "../../hooks/useDishCounter";
-import type { RestaurantMenuItem } from "../../mocks/restaurants.mock";
 import { Counter } from "../Counter/counter";
 import styles from "./menu-list-item.module.css";
 import { useUserContext } from "../../hooks/useUserContext";
+import { useSelector } from "react-redux";
+import { selectDishById } from "../../slices/dishesSlice";
+import type { RootState } from "../../store";
 
-export const MenuListItem = (
-  menuItem: Omit<RestaurantMenuItem, "id">
-): JSX.Element => {
+export const MenuListItem = (props: { dishId: string }): JSX.Element => {
   const [dishCount, addDish, removeDish] = useDishCounter(0);
   const [user] = useUserContext();
+
+  const menuItem =
+    useSelector((state: RootState) => selectDishById(state, props?.dishId)) ||
+    {};
+    
+  if (!menuItem) {
+    return <p>No menu item provided</p>;
+  }
   const { name, price, ingredients } = menuItem;
   return (
     <li>
