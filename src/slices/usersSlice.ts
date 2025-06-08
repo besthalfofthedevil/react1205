@@ -8,11 +8,11 @@ export interface UsersStore {
 
 const initialState: UsersStore = {
   ids: normalizedUsers.map(({ id }) => id),
-  users: normalizedUsers.reduce((acc, dish) => {
+  users: normalizedUsers.reduce<Record<string, User>>((acc, dish) => {
     acc[dish.id] = dish;
 
     return acc;
-  }, {} as Record<string, User>),
+  }, {}),
 };
 
 export const usersSlice = createSlice({
@@ -25,5 +25,4 @@ export const usersSlice = createSlice({
   },
 });
 
-export const { selectUserIds, selectUserById } =
-  usersSlice.selectors;
+export const { selectUserIds, selectUserById } = usersSlice.selectors;

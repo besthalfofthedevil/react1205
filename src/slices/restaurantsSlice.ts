@@ -11,11 +11,14 @@ export interface RestaurantStore {
 
 const initialState: RestaurantStore = {
   ids: normalizedRestaurants.map(({ id }) => id),
-  restaurants: normalizedRestaurants.reduce((acc, restraunt) => {
-    acc[restraunt.id] = restraunt;
+  restaurants: normalizedRestaurants.reduce<Record<string, Restaurant>>(
+    (acc, restraunt) => {
+      acc[restraunt.id] = restraunt;
 
-    return acc;
-  }, {} as Record<string, Restaurant>),
+      return acc;
+    },
+    {}
+  ),
 };
 
 export const restaurantSlice = createSlice({

@@ -8,11 +8,11 @@ export interface DishesStore {
 
 const initialState: DishesStore = {
   ids: normalizedDishes.map(({ id }) => id),
-  dishes: normalizedDishes.reduce((acc, dish) => {
+  dishes: normalizedDishes.reduce<Record<string, Dish>>((acc, dish) => {
     acc[dish.id] = dish;
 
     return acc;
-  }, {} as Record<string, Dish>),
+  }, {}),
 };
 
 export const dishesSlice = createSlice({

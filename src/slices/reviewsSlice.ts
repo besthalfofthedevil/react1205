@@ -1,8 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {
-  normalizedReviews,
-  type Review,
-} from "../mocks/normalized-mock";
+import { normalizedReviews, type Review } from "../mocks/normalized-mock";
 
 export interface ReviewsStore {
   ids: string[];
@@ -11,11 +8,11 @@ export interface ReviewsStore {
 
 const initialState: ReviewsStore = {
   ids: normalizedReviews.map(({ id }) => id),
-  reviews: normalizedReviews.reduce((acc, review) => {
+  reviews: normalizedReviews.reduce<Record<string, Review>>((acc, review) => {
     acc[review.id] = review;
 
     return acc;
-  }, {} as Record<string, Review>),
+  }, {}),
 };
 
 export const reveiwsSlice = createSlice({
@@ -24,10 +21,8 @@ export const reveiwsSlice = createSlice({
   reducers: {},
   selectors: {
     selectReviewIds: (state: ReviewsStore) => state.ids,
-    selectReviewById: (state: ReviewsStore, id: string) =>
-      state.reviews[id],
+    selectReviewById: (state: ReviewsStore, id: string) => state.reviews[id],
   },
 });
 
-export const { selectReviewIds, selectReviewById } =
-  reveiwsSlice.selectors;
+export const { selectReviewIds, selectReviewById } = reveiwsSlice.selectors;
