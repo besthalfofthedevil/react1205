@@ -8,10 +8,9 @@ import { useUserContext } from "../../hooks/useUserContext";
 import { selectRestaurantById } from "../../slices/restaurantsSlice";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../store";
+import { Cart } from "../Cart/Cart";
 
-export const RestaurantComponent = (props: {
-  id: string;
-}): JSX.Element => {
+export const RestaurantComponent = (props: { id: string }): JSX.Element => {
   const [user] = useUserContext();
   const { id: restaurantId } = props;
   const { name, menu, reviews } =
@@ -31,7 +30,8 @@ export const RestaurantComponent = (props: {
         <StarsBar rating={4.5} totalStars={5} />
       </section>
       <section className={styles.content}>
-        {hasMenu && <Menu menu={menu} />}
+        <div className={styles.contentColumn}>{hasMenu && <Menu menu={menu} />}</div>
+        <div className={styles.contentColumn}> {user.isAutenticated && <Cart />}</div>
       </section>
       <section className={styles.content}>
         <div className={styles.contentColumn}>
