@@ -1,20 +1,28 @@
 import type { JSX } from "react";
-import { useDishCounter } from "../../hooks/useDishCounter";
 import { Counter } from "../Counter/counter";
 import styles from "./menu-list-item.module.css";
 import { useUserContext } from "../../hooks/useUserContext";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectDishById } from "../../slices/dishesSlice";
 import type { RootState } from "../../store";
+import {
+  addToCart,
+  removeFromCart,
+  selectItemAmountById,
+} from "../../slices/cartSlice";
 
 export const MenuListItem = (props: { dishId: string }): JSX.Element => {
-  const [dishCount, addDish, removeDish] = useDishCounter(0);
+  const dishCount =
+    useSelector((state: RootState) =>
+      selectItemAmountById(state, props?.dishId)
+    ) || 0;
+  const dispatch = useDispatch();
   const [user] = useUserContext();
 
   const menuItem =
     useSelector((state: RootState) => selectDishById(state, props?.dishId)) ||
     {};
-    
+
   if (!menuItem) {
     return <p>No menu item provided</p>;
   }
@@ -30,7 +38,11 @@ export const MenuListItem = (props: { dishId: string }): JSX.Element => {
           <p className={styles.itemPrice}>{`$${price}`} </p>
         </div>
         {user.isAutenticated && (
-          <Counter count={dishCount} add={addDish} substract={removeDish} />
+          <Counter
+            count={dishCount}
+            add={() => dispatch(addToCart(props.dishId))}
+            substract={() => dispatch(removeFromCart(props.dishId))}
+          />
         )}
       </div>
     </li>
