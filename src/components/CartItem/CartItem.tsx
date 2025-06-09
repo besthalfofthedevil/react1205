@@ -15,7 +15,7 @@ export const CartItem = (props: { dishId: string }) => {
     ) || 0;
   const dispatch = useDispatch();
 
-  const { name } =
+  const { name, price } =
     useSelector((state: RootState) => selectDishById(state, props?.dishId)) ||
     {};
   return (
@@ -26,7 +26,7 @@ export const CartItem = (props: { dishId: string }) => {
         add={() => dispatch(addToCart(props.dishId))}
         substract={() => dispatch(removeFromCart(props.dishId))}
       />
-      <span className={styles.basketItemPrice}>12.00 $</span>
+      <span className={styles.basketItemPrice}>${dishCount * price}</span>
     </div>
   );
 };

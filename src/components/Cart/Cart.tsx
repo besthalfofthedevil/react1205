@@ -3,10 +3,11 @@ import styles from "./Cart.module.css";
 import { CartItem } from "../CartItem/CartItem";
 import type { RootState } from "../../store";
 import { useSelector } from "react-redux";
-import { selectCartItems } from "../../slices/cartSlice";
+import { selectCartItems, selectCartTotal } from "../../slices/cartSlice";
 
 export const Cart = () => {
   const cartItems = useSelector((state: RootState) => selectCartItems(state));
+  const total = useSelector((state: RootState) => selectCartTotal(state)) || 0;
   const isBasketEmpty = !cartItems || cartItems.length === 0;
   return (
     <div className={styles.basket}>
@@ -26,7 +27,7 @@ export const Cart = () => {
           <div className={styles.basketSummary}>
             <div className={styles.summaryRow}>
               <span className={styles.summaryLabel}>Sub-total</span>
-              <span className={styles.summaryValue}>15.00 $</span>
+              <span className={styles.summaryValue}>${total}</span>
             </div>
             <div className={styles.summaryRow}>
               <span className={styles.summaryLabel}>Delivery costs:</span>
@@ -37,7 +38,7 @@ export const Cart = () => {
               className={classNames(styles.summaryRow, styles.summaryRowTotal)}
             >
               <span className={styles.summaryLabel}>Total</span>
-              <span className={styles.summaryValue}>15.00 $</span>
+              <span className={styles.summaryValue}>${total}</span>
             </div>
           </div>
           <button className={styles.checkoutBtn}>CHECKOUT</button>
