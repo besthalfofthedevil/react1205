@@ -24,11 +24,11 @@ export const RestaurantComponent = (props: { id: string }): JSX.Element => {
   const hasReviews = Array.isArray(reviews) && reviews.length > 0;
   return (
     <div>
-      <section className={styles.restaurantBanner}>
+      {/* <section className={styles.restaurantBanner}>
         <h1 className={styles.restaurantTitle}>{name}</h1>
         <p className={styles.restaurantCuisine}>pizza, sushi, vegan</p>
         <StarsBar rating={4.5} totalStars={5} />
-      </section>
+      </section> */}
       <section className={styles.content}>
         <div className={styles.contentColumn}>{hasMenu && <Menu menu={menu} />}</div>
         <div className={styles.contentColumn}> {user.isAutenticated && <Cart />}</div>

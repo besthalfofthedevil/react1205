@@ -1,0 +1,42 @@
+.card {
+  display: flex;
+  border: 1px solid black;
+  margin: 0 0.5em;
+}
+
+.restaurantCard {
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1.5rem; /* Space between image and details */
+  align-items: center; /* Vertically align image and text */
+}
+
+.restaurantCardImage {
+  width: 120px; /* Fixed width for image */
+  height: 120px; /* Fixed height for image */
+  border-radius: 0.25rem;
+  object-fit: cover; /* Ensure image covers the area without distortion */
+  flex-shrink: 0; /* Prevent image from shrinking */
+}
+
+
+.restaurantName {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.cuisineTypes {
+  font-size: 0.95rem;
+  color: var(--text-medium);
+  margin-bottom: 0.5rem;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem; /* Smaller gap for stars */
+}
