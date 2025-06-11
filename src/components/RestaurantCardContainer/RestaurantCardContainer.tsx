@@ -14,7 +14,7 @@ export const RestaurantCardContainer = ({ id }: { id: string }) => {
   }
 
   return (
-    <NavLink to={id} key={id}>
+    <NavLink to={"/restaurants/" + id} key={id}>
       <div className={styles.restaurantCard}>
         <img
           src="https://dummyimage.com//120x120/8B4513/FFFFFF?text=Steak"
