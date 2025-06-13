@@ -11,7 +11,6 @@ import { HomePage } from "./pages/HomePage/HomePage";
 import { Cart } from "./components/Cart/Cart";
 import { RestaurantsPage } from "./pages/RestaurantsPage/RestaurantsPage";
 import { RestaurantPage } from "./pages/RestaurantPage/RestaurantPage";
-import { RestaurantsListPage } from "./pages/RestaurantsListPage/RestaurantsListPage";
 import { RestaurantMenuPage } from "./components/RestaurantMenuPage/RestaurantMenuPage";
 import { RestaurantReviewsPage } from "./components/RestaurantReviewsPage/RestaurantReviewsPage";
 
@@ -31,14 +30,15 @@ const App = () => {
             <Layout>
               <Routes>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/restaurants" element={<RestaurantsPage />}/>
-                  <Route index element={<RestaurantsListPage />} />
-                  <Route path="/restaurants/:restaurantId" element={<RestaurantPage />}>
-                    <Route index element={<RestaurantMenuPage />} />
-                    <Route path="reviews" element={<RestaurantReviewsPage />} />
-                    <Route path="menu" element={<RestaurantMenuPage />} />
-                  </Route>
-           
+                <Route path="/restaurants" element={<RestaurantsPage />} />
+                <Route
+                  path="/restaurants/:restaurantId"
+                  element={<RestaurantPage />}
+                >
+                  <Route index element={<RestaurantMenuPage />} />
+                  <Route path="reviews" element={<RestaurantReviewsPage />} />
+                  <Route path="menu" element={<RestaurantMenuPage />} />
+                </Route>
 
                 <Route path="/dish/:dishId" element={<HomePage />} />
 

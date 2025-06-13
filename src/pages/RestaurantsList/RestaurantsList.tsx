@@ -1,11 +1,9 @@
-import { useSelector } from "react-redux";
 import { RestaurantCardContainer } from "../../components/RestaurantCardContainer/RestaurantCardContainer";
-import { selectRestaurantIds } from "../../slices/restaurantsSlice";
-import styles from "./RestaurantsListPage.module.css";
+import styles from "./RestaurantsList.module.css";
 
-export const RestaurantsListPage = () => {
-  const restrauntIds = useSelector(selectRestaurantIds);
-
+export const RestaurantsList = (props: { restrauntIds: string[] }) => {
+  // const restrauntIds = useSelector(selectRestaurantIds);
+  const { restrauntIds = [] } = props;
   return (
     <div>
       {restrauntIds.length === 0 && <p>No restaurants available.</p>}
