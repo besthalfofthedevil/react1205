@@ -6,7 +6,7 @@ import { ThemeContextProvider } from "./providers/ThemeProvider/ThemeProvider";
 import { UserContextProvider } from "./providers/UserContext/UserContextProvider";
 import { store } from "./store";
 import { Provider } from "react-redux";
-import { BrowserRouter, Route, Routes } from "react-router";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import { HomePage } from "./pages/HomePage/HomePage";
 import { Cart } from "./components/Cart/Cart";
 import { RestaurantsPage } from "./pages/RestaurantsPage/RestaurantsPage";
@@ -35,7 +35,7 @@ const App = () => {
                   path="/restaurants/:restaurantId"
                   element={<RestaurantPage />}
                 >
-                  <Route index element={<RestaurantMenuPage />} />
+                  <Route index element={<Navigate to="menu" />} />
                   <Route path="reviews" element={<RestaurantReviewsPage />} />
                   <Route path="menu" element={<RestaurantMenuPage />} />
                 </Route>
