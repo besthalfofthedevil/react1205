@@ -32,7 +32,6 @@ export const CuisineNavigation = () => {
   };
 
   const isCuisineSelected = (cuisine: string) => {
-    console.log(selectedCuisines);
     return selectedCuisines.includes(cuisine);
   };
 

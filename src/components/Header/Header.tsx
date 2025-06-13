@@ -2,12 +2,13 @@ import { ProgressBar } from "../ProgressBar/progress-bar";
 import styles from "./header.module.css";
 import { ThemeSwitch } from "../ThemeSwitch/ThemeSwitch";
 import { Auth } from "../Auth/Auth";
+import { NavigateBack } from "../NavigateBack/NavigateBack";
 export const Header = () => {
   return (
     <header className={styles.header}>
       <ProgressBar />
       <div className={styles.headerLeft}>
-        <Auth />
+        <NavigateBack />
       </div>
       <div className={styles.logo}>
         ANY<span>FOOD</span>
@@ -18,6 +19,7 @@ export const Header = () => {
           <span>UAH</span>
         </div>
         <ThemeSwitch />
+        <Auth />
       </div>
     </header>
   );

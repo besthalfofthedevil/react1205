@@ -1,5 +1,4 @@
 import { createRoot } from "react-dom/client";
-
 import "./styles.css";
 import { StrictMode } from "react";
 import { Layout } from "./components/Layout/Layout";
@@ -13,6 +12,8 @@ import { Cart } from "./components/Cart/Cart";
 import { RestaurantsPage } from "./pages/RestaurantsPage/RestaurantsPage";
 import { RestaurantPage } from "./pages/RestaurantPage/RestaurantPage";
 import { RestaurantsListPage } from "./pages/RestaurantsListPage/RestaurantsListPage";
+import { RestaurantMenuPage } from "./components/RestaurantMenuPage/RestaurantMenuPage";
+import { RestaurantReviewsPage } from "./components/RestaurantReviewsPage/RestaurantReviewsPage";
 
 const rootElement = document.getElementById("root");
 if (!rootElement) {
@@ -26,23 +27,25 @@ const App = () => {
     <Provider store={store}>
       <ThemeContextProvider>
         <UserContextProvider>
-          <Layout>
-            <BrowserRouter>
+          <BrowserRouter>
+            <Layout>
               <Routes>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/restaurants" element={<RestaurantsPage />}>
+                <Route path="/restaurants" element={<RestaurantsPage />}/>
                   <Route index element={<RestaurantsListPage />} />
-                  <Route path=":restaurantId" element={<RestaurantPage />}>
-                    {/*      <Route path="reviews" element={<RestaurantReviews />} />*/}
+                  <Route path="/restaurants/:restaurantId" element={<RestaurantPage />}>
+                    <Route index element={<RestaurantMenuPage />} />
+                    <Route path="reviews" element={<RestaurantReviewsPage />} />
+                    <Route path="menu" element={<RestaurantMenuPage />} />
                   </Route>
-                </Route>
+           
 
-                {/*    <Route path="/dish/:dishId" element={<DishPage />} /> */}
+                <Route path="/dish/:dishId" element={<HomePage />} />
 
                 <Route path="/cart" element={<Cart />} />
               </Routes>
-            </BrowserRouter>
-          </Layout>
+            </Layout>
+          </BrowserRouter>
         </UserContextProvider>
       </ThemeContextProvider>
     </Provider>

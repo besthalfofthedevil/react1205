@@ -1,12 +1,13 @@
 import { Outlet } from "react-router";
-import { RestaurantsTabs } from "../../components/RestaurantsTabs/RestaurantsTabs";
 import { Banner } from "../../components/Banner/Banner";
 
 export const RestaurantsPage = () => {
   return (
     <>
-      <Banner />
-      <RestaurantsTabs />
+      <Banner
+        title="Order Food"
+        subtitle={`From ${10} Restraunts`}
+      />
       <Outlet />
     </>
   );

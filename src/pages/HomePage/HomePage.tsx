@@ -8,10 +8,14 @@ import styles from "./HomePage.module.css";
 //Very basic HomePage component that displays a banner, cuisine navigation, and a list of restaurant cards.
 export const HomePage = () => {
   //TODO: select restaurant ids from the store by cuisine
+
   const restrauntIds = useSelector(selectRestaurantIds);
   return (
     <div>
-      <Banner />
+      <Banner
+        title="Order Food"
+        subtitle={`From ${restrauntIds.length} Restraunts`}
+      />
       <CuisineNavigation />
       {restrauntIds.length === 0 && <p>No restaurants available.</p>}
       <ul>
