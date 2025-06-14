@@ -8,12 +8,12 @@ import { store } from "./store";
 import { Provider } from "react-redux";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import { HomePage } from "./pages/HomePage/HomePage";
-import { Cart } from "./components/Cart/Cart";
 import { RestaurantsPage } from "./pages/RestaurantsPage/RestaurantsPage";
 import { RestaurantPage } from "./pages/RestaurantPage/RestaurantPage";
 import { RestaurantMenuPage } from "./components/RestaurantMenuPage/RestaurantMenuPage";
 import { RestaurantReviewsPage } from "./components/RestaurantReviewsPage/RestaurantReviewsPage";
 import { CartContainer } from "./components/CartContainer/CartContainer";
+import { DishPage } from "./components/DishPage/DishPage";
 
 const rootElement = document.getElementById("root");
 if (!rootElement) {
@@ -41,7 +41,7 @@ const App = () => {
                   <Route path="menu" element={<RestaurantMenuPage />} />
                 </Route>
 
-                <Route path="/dish/:dishId" element={<HomePage />} />
+                <Route path="/dish/:dishId" element={<DishPage />} />
 
                 {/* <Route path="/cart" element={<Cart />} /> */}
               </Routes>
