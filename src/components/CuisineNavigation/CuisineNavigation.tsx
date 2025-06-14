@@ -2,26 +2,26 @@ import classNames from "classnames";
 import styles from "./CuisineNavigation.module.css";
 import { useState } from "react";
 
-export const CuisineNavigation = () => {
-  const cuisines = [
-    "pizza",
-    "sushi",
-    "vegan",
-    "steak",
-    "asian",
-    "seafood",
-    "pasta",
-  ];
+const CUISINES_LIST = [
+  "pizza",
+  "sushi",
+  "vegan",
+  "steak",
+  "asian",
+  "seafood",
+  "pasta",
+];
 
+export const CuisineNavigation = () => {
   const [selectedCuisines, setCursine] = useState<string[]>([]);
   const handleAllCuisinesChange = () => {
     setCursine((prevCuisines) =>
-      prevCuisines.length === cuisines.length ? [] : [...cuisines]
+      prevCuisines.length === CUISINES_LIST.length ? [] : [...CUISINES_LIST]
     );
   };
 
   const isAllSelected = (selected: string[]) =>
-    selected.length === cuisines.length;
+    selected.length === CUISINES_LIST.length;
 
   const handleCuisineChange = (cuisine: string) => {
     setCursine((prevCuisines) =>
@@ -47,7 +47,7 @@ export const CuisineNavigation = () => {
         >
           all
         </li>
-        {cuisines.map((cuisine) => (
+        {CUISINES_LIST.map((cuisine) => (
           <li
             key={cuisine}
             className={classNames(styles.cuisineItem, {
