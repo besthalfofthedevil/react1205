@@ -13,6 +13,7 @@ import { RestaurantsPage } from "./pages/RestaurantsPage/RestaurantsPage";
 import { RestaurantPage } from "./pages/RestaurantPage/RestaurantPage";
 import { RestaurantMenuPage } from "./components/RestaurantMenuPage/RestaurantMenuPage";
 import { RestaurantReviewsPage } from "./components/RestaurantReviewsPage/RestaurantReviewsPage";
+import { CartContainer } from "./components/CartContainer/CartContainer";
 
 const rootElement = document.getElementById("root");
 if (!rootElement) {
@@ -42,8 +43,9 @@ const App = () => {
 
                 <Route path="/dish/:dishId" element={<HomePage />} />
 
-                <Route path="/cart" element={<Cart />} />
+                {/* <Route path="/cart" element={<Cart />} /> */}
               </Routes>
+              <CartContainer />
             </Layout>
           </BrowserRouter>
         </UserContextProvider>
