@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { normalizedDishes, type Dish } from "../mocks/normalized-mock";
+import type { RootState } from "../store";
 
 export interface DishesStore {
   ids: string[];
@@ -26,3 +27,5 @@ export const dishesSlice = createSlice({
 });
 
 export const { selectDishIds, selectDishById } = dishesSlice.selectors;
+
+export const selectDishSlice = (state: RootState) => state[dishesSlice.name];

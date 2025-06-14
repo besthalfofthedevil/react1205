@@ -43,12 +43,10 @@ export const ReviewForm = () => {
         <label className={styles.formLabel}>Rating:</label>
         <Counter
           count={rating}
-          add={(e) => {
-            e.preventDefault();
+          add={() => {
             incrementRating();
           }}
-          substract={(e) => {
-            e.preventDefault();
+          substract={() => {
             decrementRating();
           }}
         />

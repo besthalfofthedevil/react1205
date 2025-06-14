@@ -1,0 +1,72 @@
+/* Basket */
+.basket {
+  flex: 1; /* Takes less space */
+  background-color: var(--bg-basket);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--primary-orange); /* Border for basket */
+  max-width: 400px; /* Limit basket width */
+  position: sticky;
+  top: calc(1rem + 60px); /* Adjust based on header height + margin */
+  margin-top: 1rem;
+}
+
+.basketTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.basketItems {
+  margin-bottom: 1.5rem;
+}
+
+
+.basketSummary {
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+  margin-bottom: 1.5rem;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.summaryRowTotal {
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin-top: 1rem;
+}
+
+.summaryLabel {
+  color: var(--text-medium);
+}
+
+.summaryValue {
+  text-align: right;
+}
+
+.summaryValue.free {
+  color: #10b981; /* Green for FREE */
+}
+
+.checkoutBtn {
+  background-color: var(--button-orange);
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1rem 1.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.checkoutBtn:hover {
+  background-color: #c2410c; /* Darker orange on hover */
+}
