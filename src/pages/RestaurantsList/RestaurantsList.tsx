@@ -2,7 +2,7 @@ import { RestaurantCardContainer } from "../../components/RestaurantCardContaine
 import styles from "./RestaurantsList.module.css";
 
 export const RestaurantsList = (props: { restrauntIds: string[] }) => {
-  // const restrauntIds = useSelector(selectRestaurantIds);
+
   const { restrauntIds = [] } = props;
   return (
     <div>
