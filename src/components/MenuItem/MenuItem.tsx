@@ -1,6 +1,6 @@
 import type { JSX } from "react";
 import { Counter } from "../Counter/counter";
-import styles from "./menu-list-item.module.css";
+import styles from "./MenuItem.module.css";
 import { useUserContext } from "../../hooks/useUserContext";
 import { useSelector, useDispatch } from "react-redux";
 import { selectDishById } from "../../slices/dishesSlice";
@@ -11,7 +11,7 @@ import {
   selectItemAmountById,
 } from "../../slices/cartSlice";
 
-export const MenuListItem = (props: { dishId: string }): JSX.Element => {
+export const MenuItem = (props: { dishId: string }): JSX.Element => {
   const dishCount =
     useSelector((state: RootState) =>
       selectItemAmountById(state, props?.dishId)
@@ -28,23 +28,19 @@ export const MenuListItem = (props: { dishId: string }): JSX.Element => {
   }
   const { name, price, ingredients } = menuItem;
   return (
-    <li>
-      <div className={styles.menuItem}>
-        <div className={styles.itemDetails}>
-          <h3 className={styles.itemName}>{name}</h3>
-          <p className={styles.itemDescription}>{`${ingredients.join(
-            ", "
-          )}`}</p>
-          <p className={styles.itemPrice}>{`$${price}`} </p>
-        </div>
-        {user.isAutenticated && (
-          <Counter
-            count={dishCount}
-            add={() => dispatch(addToCart(props.dishId))}
-            substract={() => dispatch(removeFromCart(props.dishId))}
-          />
-        )}
+    <div className={styles.menuItem}>
+      <div className={styles.itemDetails}>
+        <h3 className={styles.itemName}>{name}</h3>
+        <p className={styles.itemDescription}>{`${ingredients.join(", ")}`}</p>
+        <p className={styles.itemPrice}>{`$${price}`} </p>
       </div>
-    </li>
+      {user.isAutenticated && (
+        <Counter
+          count={dishCount}
+          add={() => dispatch(addToCart(props.dishId))}
+          substract={() => dispatch(removeFromCart(props.dishId))}
+        />
+      )}
+    </div>
   );
 };

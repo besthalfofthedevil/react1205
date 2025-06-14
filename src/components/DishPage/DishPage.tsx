@@ -1,8 +1,9 @@
 import { useParams } from "react-router";
-import { MenuListItem } from "../Menu/menu-list-item";
+import { MenuItem } from "../MenuItem/MenuItem";
+
 
 export const DishPage = () => {
   const { dishId = "" } = useParams();
 
-  return <MenuListItem key={dishId} dishId={dishId} />;
+  return <MenuItem key={dishId} dishId={dishId} />;
 };

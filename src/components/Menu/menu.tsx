@@ -1,6 +1,6 @@
 import { NavLink } from "react-router";
-import { MenuListItem } from "./menu-list-item";
 import styles from "./menu.module.css";
+import { MenuItem } from "../MenuItem/MenuItem";
 
 export const Menu = ({ menu }: { menu: string[] }) => {
   return (
@@ -9,7 +9,9 @@ export const Menu = ({ menu }: { menu: string[] }) => {
         {menu.map((dishId) => {
           return (
             <NavLink key={dishId} to={"/dish/" + dishId}>
-              <MenuListItem key={dishId} dishId={dishId} />
+              <li>
+                <MenuItem key={dishId} dishId={dishId} />
+              </li>
             </NavLink>
           );
         })}
