@@ -1,4 +1,4 @@
-import type { JSX } from "react";
+import type { JSX, MouseEventHandler } from "react";
 import styles from "./counter.module.css";
 
 export const Counter = ({
@@ -7,16 +7,28 @@ export const Counter = ({
   substract,
 }: {
   count: number;
-  add: (e: any) => void;
-  substract: (e: any) => void;
+  add: () => void;
+  substract: () => void;
 }): JSX.Element => {
   return (
     <div className={styles.quantityControl}>
-      <button className={styles.quantityBtn} onClick={substract}>
+      <button
+        className={styles.quantityBtn}
+        onClick={(e) => {
+          e.preventDefault();
+          substract();
+        }}
+      >
         -
       </button>
       <span className={styles.quantityDisplay}>{count}</span>
-      <button className={styles.quantityBtn} onClick={add}>
+      <button
+        className={styles.quantityBtn}
+        onClick={(e) => {
+          e.preventDefault();
+          add();
+        }}
+      >
         +
       </button>
     </div>

@@ -40,10 +40,7 @@ const App = () => {
                   <Route path="reviews" element={<RestaurantReviewsPage />} />
                   <Route path="menu" element={<RestaurantMenuPage />} />
                 </Route>
-
                 <Route path="/dish/:dishId" element={<DishPage />} />
-
-                {/* <Route path="/cart" element={<Cart />} /> */}
               </Routes>
               <CartContainer />
             </Layout>
