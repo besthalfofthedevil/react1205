@@ -42,7 +42,6 @@
   flex-direction: row;
   gap: 2rem;
   padding: 0 2rem 2rem;
-
 }
 
 .contentColumn {
@@ -50,4 +49,40 @@
   flex-direction: column;
   flex-basis: 100%;
   flex: 1;
+}
+
+/* Nav Tabs */
+.navTabs {
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  border-bottom: 1px solid var(--border-color);
+  padding-top: 1rem;
+  padding-bottom: 0;
+  margin-bottom: 1.5rem;
+}
+
+.navTab {
+  font-size: 1.125rem;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  color: var(--text-light);
+  position: relative;
+}
+
+.navTab.active {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.navTab.active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px; /* Align with border-bottom of .nav-tabs */
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: var(--primary-orange);
+  border-radius: 2px;
 }

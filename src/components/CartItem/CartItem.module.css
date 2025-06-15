@@ -1,0 +1,51 @@
+.basketItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.basketItemName {
+  font-size: 1rem;
+  font-weight: 500;
+  flex-grow: 1;
+}
+
+.basketItemQuantityControl {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0 0.75rem;
+}
+
+.basketQuantityBtn {
+  background-color: var(--primary-orange);
+  color: #fff;
+  border: none;
+  border-radius: 0.15rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.basketQuantityBtn:hover {
+  background-color: #d97706;
+}
+
+.basketQuantityDisplay {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.basketItemPrice {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  text-align: right;
+  min-width: 4rem; /* Ensure consistent alignment */
+}
