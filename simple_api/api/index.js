@@ -1,23 +1,24 @@
 const router = require("express").Router();
 const { nanoid } = require("nanoid");
 const { products, codecs, users, reviews } = require("./mock");
+const { normalizedRestaurants } = require("./normalized-mock");
 const { reply, getById, updateById } = require("./utils");
 
-router.get("/products", (req, res, next) => {
-  console.log("get products");
-  reply(res, products);
+router.get("/restaurants", (req, res, next) => {
+  console.log("get normalizedRestaurants");
+  reply(res, normalizedRestaurants);
 });
 
-router.get("/product/:productId", (req, res, next) => {
-  const productId = req.params?.productId;
-  console.log(productId);
-  let product;
+router.get("/restaurant/:restaurantId", (req, res, next) => {
+  const restaurantId = req.params?.restaurantId;
+  console.log(restaurantId);
+  let restaurant;
 
-  if (productId) {
-    product = getById(products)(productId);
+  if (restaurantId) {
+    restaurant = getById(normalizedRestaurants)(restaurantId);
   }
 
-  reply(res, product);
+  reply(res, restaurant);
 });
 
 router.get("/codecs", (req, res, next) => {
