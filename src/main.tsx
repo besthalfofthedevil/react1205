@@ -4,7 +4,7 @@ import { StrictMode } from "react";
 import { Layout } from "./components/Layout/Layout";
 import { ThemeContextProvider } from "./providers/ThemeProvider/ThemeProvider";
 import { UserContextProvider } from "./providers/UserContext/UserContextProvider";
-import { store } from "./store";
+import { store } from "./redux/store";
 import { Provider } from "react-redux";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import { HomePage } from "./pages/HomePage/HomePage";

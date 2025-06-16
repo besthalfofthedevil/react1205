@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { restaurantSlice } from "./slices/restaurantsSlice";
-import { dishesSlice } from "./slices/dishesSlice";
-import { reveiwsSlice } from "./slices/reviewsSlice";
-import { usersSlice } from "./slices/usersSlice";
-import { cartSlice } from "./slices/cartSlice";
+import { dishesSlice } from "../slices/dishesSlice";
+import { reveiwsSlice } from "../slices/reviewsSlice";
+import { usersSlice } from "../slices/usersSlice";
+import { cartSlice } from "../slices/cartSlice";
+import { restaurantSlice } from "./entities/restaurants/restaurantsSlice";
 
 export const store = configureStore({
   reducer: {

@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { StarsBar } from "../StarsBar/stars-bar";
 import styles from "./ReviewListItem.module.css";
-import type { RootState } from "../../store";
+import type { RootState } from "../../redux/store";
 import { selectReviewById } from "../../slices/reviewsSlice";
 import { selectUserById } from "../../slices/usersSlice";
 

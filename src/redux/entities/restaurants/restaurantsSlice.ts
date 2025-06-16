@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   normalizedRestaurants,
   type Restaurant,
-} from "../mocks/normalized-mock";
+} from "../../../mocks/normalized-mock";
 
 export interface RestaurantStore {
   ids: string[];

@@ -1,11 +1,12 @@
 import type { JSX } from "react";
 import styles from "./restaurant.module.css";
 import { StarsBar } from "../StarsBar/stars-bar";
-import { selectRestaurantById } from "../../slices/restaurantsSlice";
+
 import { useSelector } from "react-redux";
-import type { RootState } from "../../store";
+import type { RootState } from "../../redux/store";
 import classNames from "classnames";
 import { NavLink, Outlet } from "react-router";
+import { selectRestaurantById } from "../../redux/entities/restaurants/restaurantsSlice";
 
 const RESTRAUNT_SUB_ROUTES = ["Menu", "Reviews"];
 

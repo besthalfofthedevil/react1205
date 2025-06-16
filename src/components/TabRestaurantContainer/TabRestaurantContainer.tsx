@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { selectRestaurantById } from "../../slices/restaurantsSlice";
-import type { RootState } from "../../store";
+import type { RootState } from "../../redux/store";
 import { NavLink } from "react-router";
 import styles from "./TabRestaurantContainer.module.css";
 import classNames from "classnames";

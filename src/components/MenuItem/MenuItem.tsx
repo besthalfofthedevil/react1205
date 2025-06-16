@@ -4,7 +4,7 @@ import styles from "./MenuItem.module.css";
 import { useUserContext } from "../../hooks/useUserContext";
 import { useSelector, useDispatch } from "react-redux";
 import { selectDishById } from "../../slices/dishesSlice";
-import type { RootState } from "../../store";
+import type { RootState } from "../../redux/store";
 import {
   addToCart,
   removeFromCart,

@@ -2,8 +2,9 @@ import { useSelector } from "react-redux";
 import { Banner } from "../../components/Banner/Banner";
 import { CuisineNavigation } from "../../components/CuisineNavigation/CuisineNavigation";
 import { RestaurantCardContainer } from "../../components/RestaurantCardContainer/RestaurantCardContainer";
-import { selectRestaurantIds } from "../../slices/restaurantsSlice";
+
 import styles from "./HomePage.module.css";
+import { selectRestaurantIds } from "../../redux/entities/restaurants/restaurantsSlice";
 
 //Very basic HomePage component that displays a banner, cuisine navigation, and a list of restaurant cards.
 export const HomePage = () => {
