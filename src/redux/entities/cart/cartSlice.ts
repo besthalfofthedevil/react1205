@@ -1,6 +1,6 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
-import type { RootState } from "../redux/store";
-import { selectDishSlice, type DishesStore } from "./dishesSlice";
+import type { RootState } from "../../store";
+import { selectDishSlice, type DishesStore } from "../dishes/dishesSlice";
 
 export type CartStore = Record<string, number>;
 

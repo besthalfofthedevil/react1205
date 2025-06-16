@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { normalizedReviews, type Review } from "../mocks/normalized-mock";
+import { normalizedReviews, type Review } from "../../../mocks/normalized-mock";
 
 export interface ReviewsStore {
   ids: string[];

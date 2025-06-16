@@ -5,9 +5,9 @@ import {
   addToCart,
   removeFromCart,
   selectItemAmountById,
-} from "../../slices/cartSlice";
+} from "../../redux/entities/cart/cartSlice";
 import type { RootState } from "../../redux/store";
-import { selectDishById } from "../../slices/dishesSlice";
+import { selectDishById } from "../../redux/entities/dishes/dishesSlice";
 export const CartItem = (props: { dishId: string }) => {
   const dishCount =
     useSelector((state: RootState) =>

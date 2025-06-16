@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { normalizedUsers, type User } from "../mocks/normalized-mock";
+import { normalizedUsers, type User } from "../../../mocks/normalized-mock";
 
 export interface UsersStore {
   ids: string[];

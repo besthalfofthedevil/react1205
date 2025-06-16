@@ -3,13 +3,13 @@ import { Counter } from "../Counter/counter";
 import styles from "./MenuItem.module.css";
 import { useUserContext } from "../../hooks/useUserContext";
 import { useSelector, useDispatch } from "react-redux";
-import { selectDishById } from "../../slices/dishesSlice";
+import { selectDishById } from "../../redux/entities/dishes/dishesSlice";
 import type { RootState } from "../../redux/store";
 import {
   addToCart,
   removeFromCart,
   selectItemAmountById,
-} from "../../slices/cartSlice";
+} from "../../redux/entities/cart/cartSlice";
 
 export const MenuItem = (props: { dishId: string }): JSX.Element => {
   const dishCount =

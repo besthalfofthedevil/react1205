@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { normalizedDishes, type Dish } from "../mocks/normalized-mock";
-import type { RootState } from "../redux/store";
+import { normalizedDishes, type Dish } from "../../../mocks/normalized-mock";
+import type { RootState } from "../../store";
 
 export interface DishesStore {
   ids: string[];
