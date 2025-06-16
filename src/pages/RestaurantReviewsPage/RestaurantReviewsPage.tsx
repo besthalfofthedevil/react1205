@@ -1,11 +1,11 @@
 import { useParams } from "react-router";
-import { Reviews } from "../Reviews/Reviews";
 import { useSelector } from "react-redux";
 import styles from "./RestaurantReviewsPage.module.css";
 import { useUserContext } from "../../hooks/useUserContext";
-import { ReviewForm } from "../ReviewForm/review-form";
 import { selectRestaurantById } from "../../redux/entities/restaurants/restaurantsSlice";
 import type { RootState } from "../../redux/store";
+import { Reviews } from "../../components/Reviews/Reviews";
+import { ReviewForm } from "../../components/ReviewForm/review-form";
 
 export const RestaurantReviewsPage = () => {
   const { restaurantId = "" } = useParams();
