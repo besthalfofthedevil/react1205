@@ -2,6 +2,7 @@ import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 import { type Restaurant } from "../../../mocks/normalized-mock";
 import { getRestaurants } from "./getRestraunts";
 import type { RootState } from "../../store";
+import { getRestaurant } from "./getRestraunt";
 
 const entityAdapter = createEntityAdapter<Restaurant>();
 
@@ -17,6 +18,10 @@ export const restaurantSlice = createSlice({
       })
       .addCase(getRestaurants.rejected, (_, action) => {
         console.error("Failed to fetch restaurants:", action.error.message);
+      })
+      .addCase(getRestaurant.fulfilled, (state, action) => {
+        const { payload } = action;
+        entityAdapter.upsertOne(state, payload);
       });
   },
 });

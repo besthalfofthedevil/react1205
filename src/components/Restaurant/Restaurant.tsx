@@ -7,11 +7,16 @@ import type { RootState } from "../../redux/store";
 import classNames from "classnames";
 import { NavLink, Outlet } from "react-router";
 import { selectRestaurantById } from "../../redux/entities/restaurants/restaurantsSlice";
+import { useRequest } from "../../redux/hooks/useRequest";
+import { getRestaurant } from "../../redux/entities/restaurants/getRestraunt";
 
 const RESTRAUNT_SUB_ROUTES = ["Menu", "Reviews"];
 
 export const RestaurantComponent = (props: { id: string }): JSX.Element => {
   const { id: restaurantId } = props;
+  const requestStatus = useRequest(getRestaurant, restaurantId);
+  console.log(requestStatus)
+
   const { name } =
     useSelector((state: RootState) =>
       selectRestaurantById(state, restaurantId)
