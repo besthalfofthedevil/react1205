@@ -1,15 +1,21 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { selectRestaurantsTotal } from "./restaurantsSlice";
 
 export const getRestaurants = createAsyncThunk(
   "restaurants/getRestaurants",
   async (_, { rejectWithValue }) => {
-    const result = await fetch(`http://localhost:3001/api/restaurants`)
-      .then((response) => response.json())
+    const response = await fetch(`http://localhost:3001/api/restaurants`);
+    const result = await response.json();
 
     if (!result?.length) {
       return rejectWithValue("Failed to fetch restaurants");
-
     }
-     return result; 
+    return result;
+  },
+  {
+    condition: (_, { getState }) => {
+      //TODO: Imptove types
+      return !selectRestaurantsTotal(getState());
+    },
   }
 );
