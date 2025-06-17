@@ -4,15 +4,31 @@ import { NavLink } from "react-router";
 import styles from "./RestaurantCardContainer.module.css";
 import { StarsBar } from "../StarsBar/stars-bar";
 import { selectRestaurantById } from "../../redux/entities/restaurants/restaurantsSlice";
+import { useEffect, useState, useTransition } from "react";
+import { type Restaurant } from "../../mocks/normalized-mock";
 
 export const RestaurantCardContainer = ({ id }: { id: string }) => {
-  const restaurant = useSelector((state: RootState) =>
-    selectRestaurantById(state, id)
-  );
+  const [restaurant, setRestraunt] = useState<Restaurant>();
+  const [isPending, startTransition] = useTransition();
+  useEffect(() => {
+    startTransition(() => {
+      fetch(`http://localhost:3001/api/restaurant/${id}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setRestraunt(data);
+        });
+    });
+    // Simulate a network request
+  }, [id]);
+
+  // const restaurant = useSelector((state: RootState) =>
+  //   selectRestaurantById(state, id)
+  // );
   if (!restaurant) {
     return null; // Skip rendering if name is not provided
   }
 
+  console.log(isPending);
   return (
     <NavLink to={"/restaurants/" + id} key={id}>
       <div className={styles.restaurantCard}>
