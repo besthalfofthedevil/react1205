@@ -5,6 +5,11 @@ import { restaurantSlice } from "./entities/restaurants/restaurantsSlice";
 import { reveiwsSlice } from "./entities/reviews/reviewsSlice";
 import { usersSlice } from "./entities/users/usersSlice";
 
+const loggerMiddleware = (store: any) => (next: any) => (action: any) => {
+  console.log(action);
+  next(action);
+};
+
 export const store = configureStore({
   reducer: {
     [restaurantSlice.name]: restaurantSlice.reducer,
@@ -13,10 +18,10 @@ export const store = configureStore({
     [usersSlice.name]: usersSlice.reducer,
     [cartSlice.name]: cartSlice.reducer,
   },
+  middleware: (getDefaultMiddlewares) => getDefaultMiddlewares().concat(loggerMiddleware),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;
- 
