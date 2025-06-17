@@ -1,31 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 import {
-  // normalizedRestaurants,
   type Restaurant,
 } from "../../../mocks/normalized-mock";
 import { getRestaurants } from "./getRestraunts";
+import type { RootState } from "../../store";
 
-export interface RestaurantStore {
-  ids: string[];
-  restaurants: Record<string, Restaurant>;
-  requestStatus: "idle" | "pending" | "fulfilled" | "rejected";
-}
-
-const initialState: RestaurantStore = {
-  ids: [],
-  restaurants: {},
-  requestStatus: "idle",
-};
+const entityAdapter = createEntityAdapter<Restaurant>();
 
 export const restaurantSlice = createSlice({
   name: "restaurantsSlice",
-  initialState,
+  initialState: entityAdapter.getInitialState({ requestStatus: "idle" }),
   reducers: {},
   selectors: {
-    selectRestaurantIds: (state: RestaurantStore) => state.ids,
-    selectRestaurantById: (state: RestaurantStore, id: string) =>
-      state.restaurants[id],
-    selectRequestStatus: (state: RestaurantStore) => state.requestStatus,
+    selectRequestStatus: (state) => state.requestStatus,
   },
   extraReducers: (builder) => {
     builder
@@ -33,18 +20,9 @@ export const restaurantSlice = createSlice({
         state.requestStatus = "pending";
       })
       .addCase(getRestaurants.fulfilled, (state, action) => {
-          state.requestStatus = "fulfilled";
+        state.requestStatus = "fulfilled";
         const { payload } = action;
-        state.ids = (payload as Restaurant[]).map(
-          (restaurant) => restaurant.id
-        );
-        state.restaurants = (payload as Restaurant[]).reduce<
-          Record<string, Restaurant>
-        >((acc, restraunt) => {
-          acc[restraunt.id] = restraunt;
-
-          return acc;
-        }, {});
+        entityAdapter.setAll(state, payload);
       })
       .addCase(getRestaurants.rejected, (state, action) => {
         state.requestStatus = "rejected";
@@ -53,5 +31,11 @@ export const restaurantSlice = createSlice({
   },
 });
 
-export const { selectRestaurantIds, selectRestaurantById, selectRequestStatus,} =
-  restaurantSlice.selectors;
+export const {
+  selectIds: selectRestaurantsIds,
+  selectById: selectRestaurantById,
+} = entityAdapter.getSelectors(
+  (state: RootState) => state[restaurantSlice.name]
+);
+
+export const { selectRequestStatus } = restaurantSlice.selectors;

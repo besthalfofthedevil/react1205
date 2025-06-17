@@ -5,7 +5,7 @@ import { RestaurantCardContainer } from "../../components/RestaurantCardContaine
 
 import styles from "./HomePage.module.css";
 import {
-  selectRestaurantIds,
+  selectRestaurantsIds,
   selectRequestStatus,
 } from "../../redux/entities/restaurants/restaurantsSlice";
 import { useEffect } from "react";
@@ -21,7 +21,7 @@ export const HomePage = () => {
     dispatch(getRestaurants());
   }, [dispatch]);
 
-  const restrauntIds = useSelector(selectRestaurantIds);
+  const restrauntIds = useSelector(selectRestaurantsIds);
   const requestStatus = useSelector(selectRequestStatus);
 
   if (requestStatus === "idle" || restrauntIds.length === 0) {
