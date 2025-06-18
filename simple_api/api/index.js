@@ -21,10 +21,22 @@ router.get("/restaurant/:restaurantId", (req, res, next) => {
   reply(res, restaurant);
 });
 
+router.get("/dish/:dishId", (req, res, next) => {
+  const dishId = req.params?.dishId;
+  console.log("get dish", dishId);
+  let dish;
+
+  if (dishId) {
+    dish = getById(normalizedDishes)(dishId);
+  }
+
+  reply(res, dish);
+});
+
 router.get("/dishes", (req, res, next) => {
   const { restaurantId } = req.query;
-    console.log("get dishes", restaurantId);
-    let result = normalizedDishes
+  console.log("get dishes", restaurantId);
+  let result = normalizedDishes
   if (restaurantId) {
     const restaurant = getById(normalizedRestaurants)(restaurantId);
     if (restaurant) {
