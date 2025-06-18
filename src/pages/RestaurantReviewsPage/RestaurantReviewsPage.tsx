@@ -6,9 +6,12 @@ import { selectRestaurantById } from "../../redux/entities/restaurants/restauran
 import type { RootState } from "../../redux/store";
 import { Reviews } from "../../components/Reviews/Reviews";
 import { ReviewForm } from "../../components/ReviewForm/review-form";
+import { useRequest } from "../../redux/hooks/useRequest";
+import { getReviews } from "../../redux/entities/reviews/getReviews";
 
 export const RestaurantReviewsPage = () => {
   const { restaurantId = "" } = useParams();
+  const requsestStatus = useRequest(getReviews, restaurantId);
   const [user] = useUserContext();
   const reviewIds =
     useSelector(

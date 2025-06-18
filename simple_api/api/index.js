@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { nanoid } = require("nanoid");
 // const { products, codecs, users, reviews } = require("./mock");
-const { normalizedRestaurants, normalizedDishes } = require("./normalized-mock");
+const { normalizedRestaurants, normalizedDishes, normalizedReviews } = require("./normalized-mock");
 const { reply, getById, updateById } = require("./utils");
 
 router.get("/restaurants", (req, res, next) => {
@@ -46,18 +46,18 @@ router.get("/dishes", (req, res, next) => {
   reply(res, result);
 });
 
-// router.get("/reviews", (req, res, next) => {
-//   console.log("get reviews");
-//   const { productId } = req.query;
-//   let result = reviews;
-//   if (productId) {
-//     const product = getById(products)(productId);
-//     if (product) {
-//       result = product.reviews.map(getById(result));
-//     }
-//   }
-//   reply(res, result);
-// });
+router.get("/reviews", (req, res, next) => {
+  const { restaurantId } = req.query;
+  console.log("get reviews", restaurantId);
+  let result = normalizedReviews;
+  if (restaurantId) {
+    const reviews = getById(normalizedReviews)(restaurantId);
+    if (reviews) {
+      result = product.reviews.map(getById(result));
+    }
+  }
+  reply(res, result);
+});
 
 // router.post("/review/:productId", (req, res, next) => {
 //   const body = req.body;
