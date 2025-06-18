@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { nanoid } = require("nanoid");
-const { normalizedRestaurants, normalizedDishes, normalizedReviews, normalizedUsers } = require("./normalized-mock");
+const { normalizedRestaurants, normalizedDishes, normalizedReviews, normalizedUsers } = require("./mock");
 const { reply, getById, updateById } = require("./utils");
 
 router.get("/restaurants", (req, res, next) => {
