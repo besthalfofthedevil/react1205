@@ -52,7 +52,7 @@ const App = () => {
 };
 
 appRoot.render(
-  // <StrictMode>
+  <StrictMode>
     <App />
-  // </StrictMode>
+  </StrictMode>
 );
