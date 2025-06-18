@@ -28,7 +28,7 @@ export const RestaurantCardContainer = ({ id }: { id: string }) => {
     return null; // Skip rendering if name is not provided
   }
 
-  console.log(isPending);
+
   return (
     <NavLink to={"/restaurants/" + id} key={id}>
       <div className={styles.restaurantCard}>

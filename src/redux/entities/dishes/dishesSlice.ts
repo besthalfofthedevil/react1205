@@ -1,31 +1,27 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { normalizedDishes, type Dish } from "../../../mocks/normalized-mock";
+import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
+import { type Dish } from "../../../mocks/normalized-mock";
 import type { RootState } from "../../store";
+import { getRestaurantMenu } from "./getMenu";
 
-export interface DishesStore {
-  ids: string[];
-  dishes: Record<string, Dish>;
-}
-
-const initialState: DishesStore = {
-  ids: normalizedDishes.map(({ id }) => id),
-  dishes: normalizedDishes.reduce<Record<string, Dish>>((acc, dish) => {
-    acc[dish.id] = dish;
-
-    return acc;
-  }, {}),
-};
+const entityAdapter = createEntityAdapter<Dish>();
 
 export const dishesSlice = createSlice({
   name: "dishesSlice",
-  initialState,
+  initialState: entityAdapter.getInitialState(),
   reducers: {},
-  selectors: {
-    selectDishIds: (store: DishesStore) => store.ids,
-    selectDishById: (store: DishesStore, id: string) => store.dishes[id],
+  extraReducers: (builder) => {
+    builder
+      .addCase(getRestaurantMenu.fulfilled, (state, action) => {
+        const { payload } = action;
+        console.log(payload)
+        entityAdapter.upsertMany(state, payload);
+      });
   },
 });
 
-export const { selectDishIds, selectDishById } = dishesSlice.selectors;
+export const selectDishesSlice = (state: RootState) => state[dishesSlice.name];
 
-export const selectDishSlice = (state: RootState) => state[dishesSlice.name];
+export const {
+  selectIds: selectDishIds,
+  selectById: selectDishById,
+} = entityAdapter.getSelectors(selectDishesSlice);

@@ -22,7 +22,7 @@ export const RestaurantComponent = (props: { id: string }): JSX.Element => {
       selectRestaurantById(state, restaurantId)
     ) || {};
   if (!name) {
-    return <p>No restaurant name provided</p>;
+    return <p>Loading...</p>;
   }
 
   return (
