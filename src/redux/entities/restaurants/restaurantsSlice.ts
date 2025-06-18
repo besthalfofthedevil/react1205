@@ -1,5 +1,5 @@
 import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
-import { type Restaurant } from "../../../mocks/normalized-mock";
+import { type Restaurant } from "../types";
 import { getRestaurants } from "./getRestraunts";
 import type { RootState } from "../../store";
 import { getRestaurant } from "./getRestraunt";

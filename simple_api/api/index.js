@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const { nanoid } = require("nanoid");
-// const { products, codecs, users, reviews } = require("./mock");
-const { normalizedRestaurants, normalizedDishes, normalizedReviews } = require("./normalized-mock");
+const { normalizedRestaurants, normalizedDishes, normalizedReviews, normalizedUsers } = require("./normalized-mock");
 const { reply, getById, updateById } = require("./utils");
 
 router.get("/restaurants", (req, res, next) => {
@@ -59,41 +58,46 @@ router.get("/reviews", (req, res, next) => {
   reply(res, result);
 });
 
-// router.post("/review/:productId", (req, res, next) => {
-//   const body = req.body;
-//   const productId = req.params?.productId;
-//   const product = productId && getById(products)(productId);
-//   let newReview = {};
+router.get("/users", (req, res, next) => {
+  console.log("get users");
+  reply(res, normalizedUsers);
+});
 
-//   if (product && body) {
-//     const newReviewId = nanoid();
+/*
+An example to use for HW#10
 
-//     newReview = {
-//       ...body,
-//       id: newReviewId,
-//     };
-//     product.reviews.push(newReviewId);
-//     reviews.push(newReview);
-//   }
+router.post("/review/:productId", (req, res, next) => {
+  const body = req.body;
+  const productId = req.params?.productId;
+  const product = productId && getById(products)(productId);
+  let newReview = {};
 
-//   reply(res, newReview);
-// });
+  if (product && body) {
+    const newReviewId = nanoid();
 
-// router.patch("/review/:reviewId", (req, res, next) => {
-//   const body = req.body;
-//   const reviewId = req.params?.reviewId;
-//   let updatedReview;
+    newReview = {
+      ...body,
+      id: newReviewId,
+    };
+    product.reviews.push(newReviewId);
+    reviews.push(newReview);
+  }
 
-//   if (reviewId) {
-//     updatedReview = updateById(reviews)(reviewId, body);
-//   }
+  reply(res, newReview);
+});
 
-//   reply(res, updatedReview);
-// });
+router.patch("/review/:reviewId", (req, res, next) => {
+  const body = req.body;
+  const reviewId = req.params?.reviewId;
+  let updatedReview;
 
-// router.get("/users", (req, res, next) => {
-//   console.log("get users");
-//   reply(res, users);
-// });
+  if (reviewId) {
+    updatedReview = updateById(reviews)(reviewId, body);
+  }
+
+  reply(res, updatedReview);
+});
+*/
+
 
 module.exports = router;

@@ -1,28 +1,27 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { normalizedUsers, type User } from "../../../mocks/normalized-mock";
+import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
+import { type User } from "../types";
+import type { RootState } from "../../store";
+import { getUsers } from "./getUsers";
 
-export interface UsersStore {
-  ids: string[];
-  users: Record<string, User>;
-}
-
-const initialState: UsersStore = {
-  ids: normalizedUsers.map(({ id }) => id),
-  users: normalizedUsers.reduce<Record<string, User>>((acc, dish) => {
-    acc[dish.id] = dish;
-
-    return acc;
-  }, {}),
-};
+const entityAdapter = createEntityAdapter<User>();
 
 export const usersSlice = createSlice({
   name: "usersSlice",
-  initialState,
+  initialState: entityAdapter.getInitialState(),
   reducers: {},
-  selectors: {
-    selectUserIds: (store: UsersStore) => store.ids,
-    selectUserById: (store: UsersStore, id: string) => store.users[id],
+  extraReducers: (builder) => {
+    builder.addCase(getUsers.fulfilled, (state, action) => {
+      const { payload } = action;
+      entityAdapter.upsertMany(state, payload);
+    });
   },
 });
 
-export const { selectUserIds, selectUserById } = usersSlice.selectors;
+export const selectReviewssSlice = (state: RootState) =>
+  state[usersSlice.name];
+
+export const {
+  selectIds: selectUserIds,
+  selectById: selectUserById,
+  selectTotal: selectUsersTotal,
+} = entityAdapter.getSelectors(selectReviewssSlice);

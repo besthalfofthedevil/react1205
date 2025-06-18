@@ -5,7 +5,7 @@ import styles from "./RestaurantCardContainer.module.css";
 import { StarsBar } from "../StarsBar/stars-bar";
 import { selectRestaurantById } from "../../redux/entities/restaurants/restaurantsSlice";
 import { useEffect, useState, useTransition } from "react";
-import { type Restaurant } from "../../mocks/normalized-mock";
+import { type Restaurant } from "../../redux/entities/types";
 
 export const RestaurantCardContainer = ({ id }: { id: string }) => {
   const [restaurant, setRestraunt] = useState<Restaurant>();

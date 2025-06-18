@@ -1,5 +1,5 @@
 import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
-import { type Review } from "../../../mocks/normalized-mock";
+import { type Review } from "../types";
 import type { RootState } from "../../store";
 import { getReviews } from "./getReviews";
 
