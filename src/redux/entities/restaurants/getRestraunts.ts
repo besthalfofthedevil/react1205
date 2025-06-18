@@ -15,7 +15,9 @@ export const getRestaurants = createAsyncThunk(
   {
     condition: (_, { getState }) => {
       //TODO: Imptove types
-      return !selectRestaurantsTotal(getState());
+      const restrauntsCount = selectRestaurantsTotal(getState());
+      // We migh have only one restraunt if user started from restraun page.
+      return restrauntsCount < 2;
     },
   }
 );
