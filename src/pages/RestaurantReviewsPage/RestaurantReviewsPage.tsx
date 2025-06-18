@@ -17,13 +17,9 @@ export const RestaurantReviewsPage = () => {
   const rewviewsRequsestStatus = useRequest(getReviews, restaurantId);
   const usersRequsestStatus = useRequest(getUsers);
 
-  // if (
-  //   rewviewsRequsestStatus !== RequestStatus.fulfilled &&
-  //   usersRequsestStatus !== RequestStatus.fulfilled
-  // ) {
-  //   return "Loading...";
-  // }
-
+  const isLoading =
+    rewviewsRequsestStatus !== RequestStatus.idle &&
+    usersRequsestStatus !== RequestStatus.idle;
   const reviewIds =
     useSelector(
       (state: RootState) => selectRestaurantById(state, restaurantId)?.reviews
@@ -32,7 +28,7 @@ export const RestaurantReviewsPage = () => {
   return (
     <>
       <div className={styles.contentColumn}>
-        <Reviews reviews={reviewIds} />
+        <Reviews reviews={reviewIds} isLoading={isLoading} />
       </div>
       <div className={styles.contentColumn}>
         {user.isAutenticated && <ReviewForm />}
