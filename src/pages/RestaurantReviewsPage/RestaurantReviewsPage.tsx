@@ -8,11 +8,22 @@ import { Reviews } from "../../components/Reviews/Reviews";
 import { ReviewForm } from "../../components/ReviewForm/review-form";
 import { useRequest } from "../../redux/hooks/useRequest";
 import { getReviews } from "../../redux/entities/reviews/getReviews";
+import { getUsers } from "../../redux/entities/users/getUsers";
+import { RequestStatus } from "../../redux/entities/request/requestSlice";
 
 export const RestaurantReviewsPage = () => {
   const { restaurantId = "" } = useParams();
-  const requsestStatus = useRequest(getReviews, restaurantId);
   const [user] = useUserContext();
+  const rewviewsRequsestStatus = useRequest(getReviews, restaurantId);
+  const usersRequsestStatus = useRequest(getUsers);
+
+  // if (
+  //   rewviewsRequsestStatus !== RequestStatus.fulfilled &&
+  //   usersRequsestStatus !== RequestStatus.fulfilled
+  // ) {
+  //   return "Loading...";
+  // }
+
   const reviewIds =
     useSelector(
       (state: RootState) => selectRestaurantById(state, restaurantId)?.reviews

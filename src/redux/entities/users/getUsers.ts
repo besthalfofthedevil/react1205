@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { selectUsersTotal } from "./usersSlice";
 
 export const getUsers = createAsyncThunk(
-  "restaurants/getRestaurants",
+  "users/getUsers",
   async (_, { rejectWithValue }) => {
     const response = await fetch(`http://localhost:3001/api/users`);
     const result = await response.json();
