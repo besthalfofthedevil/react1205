@@ -15,7 +15,6 @@ const RESTRAUNT_SUB_ROUTES = ["Menu", "Reviews"];
 export const RestaurantComponent = (props: { id: string }): JSX.Element => {
   const { id: restaurantId } = props;
   const requestStatus = useRequest(getRestaurant, restaurantId);
-  console.log(requestStatus)
 
   const { name } =
     useSelector((state: RootState) =>

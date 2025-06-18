@@ -18,7 +18,6 @@ export const dishesSlice = createSlice({
       })
       .addCase(getDish.fulfilled, (state, action) => {
         const { payload } = action;
-        console.log(payload);
         entityAdapter.upsertOne(state, payload);
       });
   },
