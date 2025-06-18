@@ -14,7 +14,6 @@ export const dishesSlice = createSlice({
     builder
       .addCase(getRestaurantMenu.fulfilled, (state, action) => {
         const { payload } = action;
-        console.log(payload);
         entityAdapter.upsertMany(state, payload);
       })
       .addCase(getDish.fulfilled, (state, action) => {

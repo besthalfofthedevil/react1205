@@ -1,4 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { selectDishById } from "./dishesSlice";
 
 export const getDish = createAsyncThunk(
   "dishes/getDish",
@@ -11,5 +12,11 @@ export const getDish = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error);
     }
+  },
+  {
+    condition: (dishId, { getState }) => {
+      //TODO: Imptove types
+      return !selectDishById(getState(), dishId);
+    },
   }
 );
