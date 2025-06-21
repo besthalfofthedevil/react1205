@@ -1,25 +1,17 @@
 import type { JSX } from "react";
 import styles from "./restaurant.module.css";
 import { StarsBar } from "../StarsBar/stars-bar";
-
-import { useSelector } from "react-redux";
-import type { RootState } from "../../redux/store";
 import classNames from "classnames";
 import { NavLink, Outlet } from "react-router";
-import { selectRestaurantById } from "../../redux/entities/restaurants/restaurantsSlice";
-import { useRequest } from "../../redux/hooks/useRequest";
-import { getRestaurant } from "../../redux/entities/restaurants/getRestaurant";
+import type { Restaurant } from "../../redux/entities/types";
 
 const RESTAURANT_SUB_ROUTES = ["Menu", "Reviews"];
 
-export const RestaurantComponent = (props: { id: string }): JSX.Element => {
-  const { id: restaurantId } = props;
-  const requestStatus = useRequest(getRestaurant, restaurantId);
+export const RestaurantComponent = (props: {
+  restaurant: Restaurant;
+}): JSX.Element => {
+  const { name } = props.restaurant;
 
-  const { name } =
-    useSelector((state: RootState) =>
-      selectRestaurantById(state, restaurantId)
-    ) || {};
   if (!name) {
     return <p>Loading...</p>;
   }

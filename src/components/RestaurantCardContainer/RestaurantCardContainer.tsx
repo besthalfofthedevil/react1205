@@ -1,23 +1,19 @@
-import { useSelector } from "react-redux";
-import type { RootState } from "../../redux/store";
 import { NavLink } from "react-router";
 import styles from "./RestaurantCardContainer.module.css";
 import { StarsBar } from "../StarsBar/stars-bar";
-import { selectRestaurantById } from "../../redux/entities/restaurants/restaurantsSlice";
-import { getRestaurant } from "../../redux/entities/restaurants/getRestaurant";
-import { useRequest } from "../../redux/hooks/useRequest";
+import type { Restaurant } from "../../redux/entities/types";
 
-export const RestaurantCardContainer = ({ id }: { id: string }) => {
-  const requestStatus = useRequest(getRestaurant, id);
-  const restaurant = useSelector((state: RootState) =>
-    selectRestaurantById(state, id)
-  );
+export const RestaurantCardContainer = ({
+  restaurant,
+}: {
+  restaurant: Restaurant;
+}) => {
   if (!restaurant) {
     return null; // Skip rendering if name is not provided
   }
 
   return (
-    <NavLink to={"/restaurants/" + id} key={id}>
+    <NavLink to={"/restaurants/" + restaurant.id} key={restaurant.id}>
       <div className={styles.restaurantCard}>
         <img
           src="https://dummyimage.com//120x120/8B4513/FFFFFF?text=Steak"

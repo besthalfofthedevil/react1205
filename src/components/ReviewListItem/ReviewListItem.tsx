@@ -2,13 +2,11 @@ import { useSelector } from "react-redux";
 import { StarsBar } from "../StarsBar/stars-bar";
 import styles from "./ReviewListItem.module.css";
 import type { RootState } from "../../redux/store";
-import { selectReviewById } from "../../redux/entities/reviews/reviewsSlice";
 import { selectUserById } from "../../redux/entities/users/usersSlice";
+import type { Review } from "../../redux/entities/types";
 
-export const ReviewListItem = (props: { id: string }) => {
-  const reviewItem =
-    useSelector((state: RootState) => selectReviewById(state, props?.id)) || {};
-  const { userId, text, rating } = reviewItem;
+export const ReviewListItem = (props: { review: Review }) => {
+  const { userId, text, rating } = props.review;
   const user =
     useSelector((state: RootState) => selectUserById(state, userId)) || {};
   return (

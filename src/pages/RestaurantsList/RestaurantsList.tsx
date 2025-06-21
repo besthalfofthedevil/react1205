@@ -1,16 +1,17 @@
 import { RestaurantCardContainer } from "../../components/RestaurantCardContainer/RestaurantCardContainer";
+import type { Restaurant } from "../../redux/entities/types";
 import styles from "./RestaurantsList.module.css";
 
-export const RestaurantsList = (props: { restaurantIds: string[] }) => {
+export const RestaurantsList = (props: { restaurants: Restaurant[] }) => {
 
-  const { restaurantIds = [] } = props;
+  const { restaurants = [] } = props;
   return (
     <div>
-      {restaurantIds.length === 0 && <p>No restaurants available.</p>}
+      {restaurants.length === 0 && <p>No restaurants available.</p>}
       <ul>
-        {restaurantIds.map((id) => (
-          <li key={id} className={styles.card}>
-            <RestaurantCardContainer key={id} id={id} />
+        {restaurants.map((restaurant) => (
+          <li key={restaurant.id} className={styles.card}>
+            <RestaurantCardContainer key={restaurant.id} restaurant={restaurant} />
           </li>
         ))}
       </ul>

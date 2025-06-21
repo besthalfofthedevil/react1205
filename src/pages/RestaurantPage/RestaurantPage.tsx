@@ -1,11 +1,19 @@
 import { useParams } from "react-router";
 import { RestaurantComponent } from "../../components/Restaurant/Restaurant";
-import { useRequest } from "../../redux/hooks/useRequest";
-import { getRestaurant } from "../../redux/entities/restaurants/getRestaurant";
+import { useGetRestaurantsQuery } from "../../redux/api";
 
 export const RestaurantPage = () => {
   const { restaurantId = "" } = useParams();
-  const requestStatus = useRequest(getRestaurant, restaurantId);
+  const { data: restaurant } = useGetRestaurantsQuery(undefined, {
+    selectFromResult: (result) => ({
+      ...result,
+      data: result?.data?.find(({ id }) => id === restaurantId),
+    }),
+  });
 
-  return <RestaurantComponent key={restaurantId} id={restaurantId} />;
+  if (!restaurant) {
+    return "No data for the restaurant";
+  }
+
+  return <RestaurantComponent key={restaurantId} restaurant={restaurant} />;
 };
