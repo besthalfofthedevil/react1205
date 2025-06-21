@@ -5,8 +5,8 @@ import { getReviews } from "./getReviews";
 
 const entityAdapter = createEntityAdapter<Review>();
 
-export const reveiwsSlice = createSlice({
-  name: "reveiwsSlice",
+export const reviewsSlice = createSlice({
+  name: "reviewsSlice",
   initialState: entityAdapter.getInitialState(),
   reducers: {},
   extraReducers: (builder) => {
@@ -18,7 +18,7 @@ export const reveiwsSlice = createSlice({
 });
 
 export const selectReviewssSlice = (state: RootState) =>
-  state[reveiwsSlice.name];
+  state[reviewsSlice.name];
 
 export const { selectIds: selectReviewIds, selectById: selectReviewById } =
   entityAdapter.getSelectors(selectReviewssSlice);

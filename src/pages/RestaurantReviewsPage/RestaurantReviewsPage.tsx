@@ -14,12 +14,12 @@ import { RequestStatus } from "../../redux/entities/request/requestSlice";
 export const RestaurantReviewsPage = () => {
   const { restaurantId = "" } = useParams();
   const [user] = useUserContext();
-  const rewviewsRequsestStatus = useRequest(getReviews, restaurantId);
-  const usersRequsestStatus = useRequest(getUsers);
+  const reviewsRequsestStatus = useRequest(getReviews, restaurantId);
+  const usersRequestStatus = useRequest(getUsers);
 
   const isLoading =
-    rewviewsRequsestStatus !== RequestStatus.idle &&
-    usersRequsestStatus !== RequestStatus.idle;
+    reviewsRequsestStatus !== RequestStatus.idle &&
+    usersRequestStatus !== RequestStatus.idle;
   const reviewIds =
     useSelector(
       (state: RootState) => selectRestaurantById(state, restaurantId)?.reviews

@@ -4,7 +4,7 @@ import {
 import { dishesSlice } from "./entities/dishes/dishesSlice";
 import { cartSlice } from "./entities/cart/cartSlice";
 import { restaurantSlice } from "./entities/restaurants/restaurantsSlice";
-import { reveiwsSlice } from "./entities/reviews/reviewsSlice";
+import { reviewsSlice } from "./entities/reviews/reviewsSlice";
 import { usersSlice } from "./entities/users/usersSlice";
 import { requestSlice } from "./entities/request/requestSlice";
 import { useDispatch } from "react-redux";
@@ -18,7 +18,7 @@ export const store = configureStore({
   reducer: {
     [restaurantSlice.name]: restaurantSlice.reducer,
     [dishesSlice.name]: dishesSlice.reducer,
-    [reveiwsSlice.name]: reveiwsSlice.reducer,
+    [reviewsSlice.name]: reviewsSlice.reducer,
     [usersSlice.name]: usersSlice.reducer,
     [cartSlice.name]: cartSlice.reducer,
     [requestSlice.name]: requestSlice.reducer,
