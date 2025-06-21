@@ -1,8 +1,8 @@
 import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 import { type Restaurant } from "../types";
-import { getRestaurants } from "./getRestraunts";
+import { getRestaurants } from "./getRestaurants";
 import type { RootState } from "../../store";
-import { getRestaurant } from "./getRestraunt";
+import { getRestaurant } from "./getRestaurant";
 
 const entityAdapter = createEntityAdapter<Restaurant>();
 

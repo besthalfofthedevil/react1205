@@ -4,7 +4,7 @@ import { NavLink } from "react-router";
 import styles from "./RestaurantCardContainer.module.css";
 import { StarsBar } from "../StarsBar/stars-bar";
 import { selectRestaurantById } from "../../redux/entities/restaurants/restaurantsSlice";
-import { getRestaurant } from "../../redux/entities/restaurants/getRestraunt";
+import { getRestaurant } from "../../redux/entities/restaurants/getRestaurant";
 import { useRequest } from "../../redux/hooks/useRequest";
 
 export const RestaurantCardContainer = ({ id }: { id: string }) => {

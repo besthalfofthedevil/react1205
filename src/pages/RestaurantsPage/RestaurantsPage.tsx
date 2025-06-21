@@ -4,13 +4,13 @@ import { RestaurantsList } from "../RestaurantsList/RestaurantsList";
 import { selectRestaurantsIds } from "../../redux/entities/restaurants/restaurantsSlice";
 import { useRequest } from "../../redux/hooks/useRequest";
 import { RequestStatus } from "../../redux/entities/request/requestSlice";
-import { getRestaurants } from "../../redux/entities/restaurants/getRestraunts";
+import { getRestaurants } from "../../redux/entities/restaurants/getRestaurants";
 
 export const RestaurantsPage = () => {
   const requestStatus = useRequest(getRestaurants);
-  const restrauntIds = useSelector(selectRestaurantsIds);
+  const restaurantIds = useSelector(selectRestaurantsIds);
 
-  if (restrauntIds.length === 0) {
+  if (restaurantIds.length === 0) {
     return <p>Loading restaurants...</p>;
   }
 
@@ -22,9 +22,9 @@ export const RestaurantsPage = () => {
     <>
       <Banner
         title="Order Food"
-        subtitle={`From ${restrauntIds.length} Restraunts`}
+        subtitle={`From ${restaurantIds.length} Restaurants`}
       />
-      <RestaurantsList restrauntIds={restrauntIds} />
+      <RestaurantsList restaurantIds={restaurantIds} />
     </>
   );
 };

@@ -1,14 +1,14 @@
 import { RestaurantCardContainer } from "../../components/RestaurantCardContainer/RestaurantCardContainer";
 import styles from "./RestaurantsList.module.css";
 
-export const RestaurantsList = (props: { restrauntIds: string[] }) => {
+export const RestaurantsList = (props: { restaurantIds: string[] }) => {
 
-  const { restrauntIds = [] } = props;
+  const { restaurantIds = [] } = props;
   return (
     <div>
-      {restrauntIds.length === 0 && <p>No restaurants available.</p>}
+      {restaurantIds.length === 0 && <p>No restaurants available.</p>}
       <ul>
-        {restrauntIds.map((id) => (
+        {restaurantIds.map((id) => (
           <li key={id} className={styles.card}>
             <RestaurantCardContainer key={id} id={id} />
           </li>

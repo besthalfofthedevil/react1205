@@ -6,7 +6,7 @@ import { Menu } from "../../components/Menu/menu";
 import { useRequest } from "../../redux/hooks/useRequest";
 import { getRestaurantMenu } from "../../redux/entities/dishes/getMenu";
 import { RequestStatus } from "../../redux/entities/request/requestSlice";
-import { getRestaurant } from "../../redux/entities/restaurants/getRestraunt";
+import { getRestaurant } from "../../redux/entities/restaurants/getRestaurant";
 
 export const RestaurantMenuPage = () => {
   const { restaurantId = "" } = useParams();

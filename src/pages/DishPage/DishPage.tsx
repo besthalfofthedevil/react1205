@@ -13,8 +13,9 @@ export const DishPage = () => {
     useSelector((state: RootState) => selectDishById(state, dishId)) || {};
   const requsestStatus = useRequest(getDish, dishId);
 
-  if (!Object.keys(dish).length && requsestStatus !== RequestStatus.fulfilled) {
+  if (!dish && requsestStatus !== RequestStatus.fulfilled) {
     return "Loading...";
   }
+
   return <MenuItem key={dishId} dishId={dishId} />;
 };

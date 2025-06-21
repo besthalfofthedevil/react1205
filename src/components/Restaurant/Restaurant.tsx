@@ -8,9 +8,9 @@ import classNames from "classnames";
 import { NavLink, Outlet } from "react-router";
 import { selectRestaurantById } from "../../redux/entities/restaurants/restaurantsSlice";
 import { useRequest } from "../../redux/hooks/useRequest";
-import { getRestaurant } from "../../redux/entities/restaurants/getRestraunt";
+import { getRestaurant } from "../../redux/entities/restaurants/getRestaurant";
 
-const RESTRAUNT_SUB_ROUTES = ["Menu", "Reviews"];
+const RESTAURANT_SUB_ROUTES = ["Menu", "Reviews"];
 
 export const RestaurantComponent = (props: { id: string }): JSX.Element => {
   const { id: restaurantId } = props;
@@ -32,7 +32,7 @@ export const RestaurantComponent = (props: { id: string }): JSX.Element => {
         <StarsBar rating={4.5} totalStars={5} />
       </section>
       <nav className={styles.navTabs}>
-        {RESTRAUNT_SUB_ROUTES.map((route) => (
+        {RESTAURANT_SUB_ROUTES.map((route) => (
           <NavLink
             key={route}
             className={({ isActive }) =>
