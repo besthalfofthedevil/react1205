@@ -1,6 +1,6 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
-import type { RootState } from "../store";
-import { selectDishSlice, type DishesStore } from "./dishesSlice";
+import type { RootState } from "../../store";
+import { selectDishesSlice } from "../dishes/dishesSlice";
 
 export type CartStore = Record<string, number>;
 
@@ -47,11 +47,10 @@ export const selectCartItems = createSelector(
 );
 
 export const selectCartTotal = createSelector(
-  [selectCartSlice, selectDishSlice],
-  (cartSlice: CartStore, dishSlice: DishesStore) => {
+  [selectCartSlice, selectDishesSlice],
+  (cartSlice: CartStore, dishSlice) => {
     return Object.keys(cartSlice).reduce<number>((acc, id) => {
-
-      return acc + dishSlice.dishes[id].price * cartSlice[id];
+      return acc + dishSlice.entities[id].price * cartSlice[id];
     }, 0);
   }
 );

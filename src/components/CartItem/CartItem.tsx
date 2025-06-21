@@ -1,19 +1,19 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Counter } from "../Counter/counter";
 import styles from "./CartItem.module.css";
 import {
   addToCart,
   removeFromCart,
   selectItemAmountById,
-} from "../../slices/cartSlice";
-import type { RootState } from "../../store";
-import { selectDishById } from "../../slices/dishesSlice";
+} from "../../redux/entities/cart/cartSlice";
+import { useAppDispatch, type RootState } from "../../redux/store";
+import { selectDishById } from "../../redux/entities/dishes/dishesSlice";
 export const CartItem = (props: { dishId: string }) => {
   const dishCount =
     useSelector((state: RootState) =>
       selectItemAmountById(state, props?.dishId)
     ) || 0;
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const { name, price } =
     useSelector((state: RootState) => selectDishById(state, props?.dishId)) ||

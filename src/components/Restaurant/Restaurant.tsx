@@ -1,22 +1,27 @@
 import type { JSX } from "react";
 import styles from "./restaurant.module.css";
 import { StarsBar } from "../StarsBar/stars-bar";
-import { selectRestaurantById } from "../../slices/restaurantsSlice";
+
 import { useSelector } from "react-redux";
-import type { RootState } from "../../store";
+import type { RootState } from "../../redux/store";
 import classNames from "classnames";
 import { NavLink, Outlet } from "react-router";
+import { selectRestaurantById } from "../../redux/entities/restaurants/restaurantsSlice";
+import { useRequest } from "../../redux/hooks/useRequest";
+import { getRestaurant } from "../../redux/entities/restaurants/getRestaurant";
 
-const RESTRAUNT_SUB_ROUTES = ["Menu", "Reviews"];
+const RESTAURANT_SUB_ROUTES = ["Menu", "Reviews"];
 
 export const RestaurantComponent = (props: { id: string }): JSX.Element => {
   const { id: restaurantId } = props;
+  const requestStatus = useRequest(getRestaurant, restaurantId);
+
   const { name } =
     useSelector((state: RootState) =>
       selectRestaurantById(state, restaurantId)
     ) || {};
   if (!name) {
-    return <p>No restaurant name provided</p>;
+    return <p>Loading...</p>;
   }
 
   return (
@@ -27,7 +32,7 @@ export const RestaurantComponent = (props: { id: string }): JSX.Element => {
         <StarsBar rating={4.5} totalStars={5} />
       </section>
       <nav className={styles.navTabs}>
-        {RESTRAUNT_SUB_ROUTES.map((route) => (
+        {RESTAURANT_SUB_ROUTES.map((route) => (
           <NavLink
             key={route}
             className={({ isActive }) =>

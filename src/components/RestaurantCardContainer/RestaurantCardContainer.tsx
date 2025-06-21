@@ -1,11 +1,14 @@
 import { useSelector } from "react-redux";
-import { selectRestaurantById } from "../../slices/restaurantsSlice";
-import type { RootState } from "../../store";
+import type { RootState } from "../../redux/store";
 import { NavLink } from "react-router";
 import styles from "./RestaurantCardContainer.module.css";
 import { StarsBar } from "../StarsBar/stars-bar";
+import { selectRestaurantById } from "../../redux/entities/restaurants/restaurantsSlice";
+import { getRestaurant } from "../../redux/entities/restaurants/getRestaurant";
+import { useRequest } from "../../redux/hooks/useRequest";
 
 export const RestaurantCardContainer = ({ id }: { id: string }) => {
+  const requestStatus = useRequest(getRestaurant, id);
   const restaurant = useSelector((state: RootState) =>
     selectRestaurantById(state, id)
   );

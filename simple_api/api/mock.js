@@ -1,11 +1,5 @@
-export type Restaurant = {
-  name: string;
-  id: string;
-  menu: string[];
-  reviews: string[];
-};
 
-export const normalizedRestaurants: Restaurant[] = [
+ const normalizedRestaurants = [
   {
     id: "a757a0e9-03c1-4a2a-b384-8ac21dbe2fb2",
     name: "Dishoom",
@@ -56,13 +50,8 @@ export const normalizedRestaurants: Restaurant[] = [
   },
 ];
 
-export type Dish = {
-  name: string;
-  id: string;
-  price: number;
-  ingredients: string[];
-};
-export const normalizedDishes = [
+
+const normalizedDishes = [
   {
     id: "d75f762a-eadd-49be-8918-ed0daa8dd024",
     name: "Chicken tikka masala",
@@ -125,13 +114,8 @@ export const normalizedDishes = [
   },
 ];
 
-export type Review = {
-  userId: string;
-  id: string;
-  text: string;
-  rating: number;
-};
-export const normalizedReviews = [
+
+const normalizedReviews = [
   {
     id: "5909796d-5030-4e36-adec-68b8f9ec2d96",
     userId: "a304959a-76c0-4b34-954a-b38dbf310360",
@@ -182,11 +166,8 @@ export const normalizedReviews = [
   },
 ];
 
-export type User = {
-  id: string;
-  name: string;
-};
-export const normalizedUsers = [
+
+const normalizedUsers = [
   {
     id: "a304959a-76c0-4b34-954a-b38dbf310360",
     name: "Antony",
@@ -212,3 +193,12 @@ export const normalizedUsers = [
     name: "Sam",
   },
 ];
+
+
+
+module.exports = {
+  normalizedRestaurants,
+  normalizedDishes,
+  normalizedReviews,
+  normalizedUsers,
+};

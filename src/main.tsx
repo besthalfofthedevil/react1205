@@ -4,16 +4,16 @@ import { StrictMode } from "react";
 import { Layout } from "./components/Layout/Layout";
 import { ThemeContextProvider } from "./providers/ThemeProvider/ThemeProvider";
 import { UserContextProvider } from "./providers/UserContext/UserContextProvider";
-import { store } from "./store";
+import { store } from "./redux/store";
 import { Provider } from "react-redux";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import { HomePage } from "./pages/HomePage/HomePage";
 import { RestaurantsPage } from "./pages/RestaurantsPage/RestaurantsPage";
 import { RestaurantPage } from "./pages/RestaurantPage/RestaurantPage";
-import { RestaurantMenuPage } from "./components/RestaurantMenuPage/RestaurantMenuPage";
-import { RestaurantReviewsPage } from "./components/RestaurantReviewsPage/RestaurantReviewsPage";
+import { RestaurantReviewsPage } from "./pages/RestaurantReviewsPage/RestaurantReviewsPage";
 import { CartContainer } from "./components/CartContainer/CartContainer";
-import { DishPage } from "./components/DishPage/DishPage";
+import { DishPage } from "./pages/DishPage/DishPage";
+import { RestaurantMenuPage } from "./pages/RestaurantMenuPage/RestaurantMenuPage";
 
 const rootElement = document.getElementById("root");
 if (!rootElement) {
