@@ -1,8 +1,14 @@
 import { useReviewForm } from "../../hooks/useReviewForm";
+import type { Review } from "../../redux/entities/types";
 import { Counter } from "../Counter/counter";
 import styles from "./review-form.module.css";
 
-export const ReviewForm = () => {
+export const ReviewForm = (props: {
+  review?: Review;
+  isSubmitDisabled: false;
+  onSubmit?: (review: Omit<Review, "userId">) => void;
+}) => {
+  const { review, onSubmit = () => {} , isSubmitDisabled} = props;
   const [
     formState,
     resetForm,
@@ -11,12 +17,14 @@ export const ReviewForm = () => {
     incrementRating,
     decrementRating,
   ] = useReviewForm();
-  const { userName, review, rating } = formState;
+
+  const { userName, text, rating } = formState;
   return (
     <form
       className={styles.reviewForm}
       onSubmit={(e) => {
         e.preventDefault();
+        onSubmit(formState);
         resetForm();
       }}
     >
@@ -35,7 +43,7 @@ export const ReviewForm = () => {
         <textarea
           name="text"
           placeholder="Write your review here..."
-          value={review}
+          value={text}
           onChange={(e) => onReviewChange(e?.target.value)}
         />
       </div>
@@ -51,7 +59,7 @@ export const ReviewForm = () => {
           }}
         />
       </div>
-      <button className={styles.publishBtn} type="submit">
+      <button className={styles.publishBtn} type="submit" disabled={isSubmitDisabled}>
         PUBLISH REVIEW
       </button>
     </form>

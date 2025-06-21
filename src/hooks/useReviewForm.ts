@@ -2,23 +2,23 @@ import { useReducer } from "react";
 
 const INITIAL_FORM_STATE = {
   userName: "",
-  review: "",
+  text: "",
   rating: 0,
 };
 
-export type FormState = typeof INITIAL_FORM_STATE;
+export type FormState = typeof INITIAL_FORM_STATE & {id?: string};
 type FormAction =
   | { type: "SET_USER_NAME_ACTION"; payload: string }
   | { type: "SET_REVIEW_ACTION"; payload: string }
   | { type: "SET_RATING_ACTION"; payload: number }
   | { type: "RESET_FORM_ACTION" };
 
-const formReducer = (state: FormState, action: FormAction) => {
+const formReducer = (state: FormState, action: FormAction):FormState  => {
   switch (action.type) {
     case "SET_USER_NAME_ACTION":
       return { ...state, userName: action.payload };
     case "SET_REVIEW_ACTION":
-      return { ...state, review: action.payload };
+      return { ...state, text: action.payload };
     case "SET_RATING_ACTION": {
       const newRating = action.payload;
       if (newRating < 0 || newRating > 5) {
@@ -34,8 +34,8 @@ const formReducer = (state: FormState, action: FormAction) => {
   }
 };
 
-export const useReviewForm = () => {
-  const [formState, dispatch] = useReducer(formReducer, INITIAL_FORM_STATE);
+export const useReviewForm = (review = INITIAL_FORM_STATE) => {
+  const [formState, dispatch] = useReducer(formReducer, review);
 
   const resetForm = () => {
     dispatch({ type: "RESET_FORM_ACTION" });

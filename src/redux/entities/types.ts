@@ -14,8 +14,8 @@ export type Dish = {
 
 export type Review = {
   userId: string;
-  id: string;
   text: string;
+  id: string;
   rating: number;
 };
 
