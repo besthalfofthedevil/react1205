@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useReviewForm } from "../../hooks/useReviewForm";
 import type { Review } from "../../redux/entities/types";
 import { Counter } from "../Counter/counter";
@@ -5,20 +6,26 @@ import styles from "./review-form.module.css";
 
 export const ReviewForm = (props: {
   review?: Review;
-  isSubmitDisabled: false;
-  onSubmit?: (review: Omit<Review, "userId">) => void;
+  isSubmitDisabled: boolean;
+  onSubmit?: (review: Review) => void;
 }) => {
-  const { review, onSubmit = () => {} , isSubmitDisabled} = props;
+  const { review, onSubmit = () => {}, isSubmitDisabled = false } = props;
+
   const [
     formState,
     resetForm,
-    onUserNameChange,
+    setForm,
     onReviewChange,
     incrementRating,
     decrementRating,
-  ] = useReviewForm();
+  ] = useReviewForm(review);
+  const { text, rating, id } = formState;
 
-  const { userName, text, rating } = formState;
+  useEffect(() => {
+    if (review) {
+      setForm(review);
+    }
+  }, [review]);
   return (
     <form
       className={styles.reviewForm}
@@ -28,16 +35,9 @@ export const ReviewForm = (props: {
         resetForm();
       }}
     >
-      <h3 className={styles.formTitle}>Leave your review</h3>
-      <div className={styles.formGroup}>
-        <label className={styles.formLabel}>Your Name:</label>
-        <input
-          type="text"
-          name="user"
-          value={userName}
-          onChange={(e) => onUserNameChange(e?.target.value)}
-        />
-      </div>
+      <h3 className={styles.formTitle}>{`${
+        id ? "Update" : "Leave"
+      } your review`}</h3>
       <div className={styles.formGroup}>
         <label className={styles.formLabel}>Review Text:</label>
         <textarea
@@ -59,8 +59,12 @@ export const ReviewForm = (props: {
           }}
         />
       </div>
-      <button className={styles.publishBtn} type="submit" disabled={isSubmitDisabled}>
-        PUBLISH REVIEW
+      <button
+        className={styles.publishBtn}
+        type="submit"
+        disabled={isSubmitDisabled}
+      >
+        {`${id ? "UPDATE" : "PUBLISH"} REVIEW`}
       </button>
     </form>
   );

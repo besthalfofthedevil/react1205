@@ -13,6 +13,18 @@ export type Dish = {
 };
 
 export type Review = {
+  text: string;
+  rating: number;
+  id?: string;
+};
+
+export type ReviewAddDto = {
+  userId: string;
+  text: string;
+  rating: number;
+};
+
+export type ReviewDto = {
   userId: string;
   text: string;
   id: string;

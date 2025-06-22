@@ -88,10 +88,11 @@ router.post("/review/:restaurantId", (req, res, next) => {
 router.patch("/review/:reviewId", (req, res, next) => {
   console.log("Update review");
   const body = req.body;
-  const restaurantId = req.params?.restaurantId;
+  const reviewId = req.params?.reviewId;
+  console.log("Update review", reviewId);
   let updatedReview;
 
-  if (restaurantId) {
+  if (reviewId) {
     updatedReview = updateById(normalizedReviews)(reviewId, body);
   }
 
