@@ -44,9 +44,9 @@
   transition: border-color 0.2s ease;
 }
 
-textarea:focus {
+/* textarea:focus {
   border-color: var(--primary-orange);
-}
+} */
 
 .formLabel {
   font-size: 1rem;
