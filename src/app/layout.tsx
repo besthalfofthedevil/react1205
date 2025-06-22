@@ -1,6 +1,6 @@
+import { React } from "react";
 
-
-const RootLayout = ({ children }) => {
+const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
       <head>
@@ -16,9 +16,7 @@ const RootLayout = ({ children }) => {
           rel="stylesheet"
         />
       </head>
-      <body>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 };
