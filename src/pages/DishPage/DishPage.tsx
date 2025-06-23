@@ -1,9 +1,10 @@
-import { useParams } from "react-router";
+"use client";
+import { useParams } from "next/navigation";
 import { MenuItem } from "../../components/MenuItem/MenuItem";
 import { useGetDishQuery } from "../../redux/api";
 
 export const DishPage = () => {
-  const { dishId = "" } = useParams();
+  const { dishId } = useParams();
 
   const { data: dish, isLoading } = useGetDishQuery(dishId);
 
