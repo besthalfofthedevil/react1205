@@ -1,3 +1,4 @@
+"use client";
 import { Banner } from "../../components/Banner/Banner";
 import { CuisineNavigation } from "../../components/CuisineNavigation/CuisineNavigation";
 import { RestaurantCardContainer } from "../../components/RestaurantCardContainer/RestaurantCardContainer";

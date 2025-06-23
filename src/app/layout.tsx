@@ -1,4 +1,12 @@
-import { React } from "react";
+"use client";
+import { React, StrictMode } from "react";
+import { Provider } from "react-redux";
+import { ThemeContextProvider } from "../providers/ThemeProvider/ThemeProvider";
+import { UserContextProvider } from "../providers/UserContext/UserContextProvider";
+import { Layout } from "../components/Layout/Layout";
+import { CartContainer } from "../components/CartContainer/CartContainer";
+import { store } from "../redux/store";
+import "../styles/global.css";
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -16,7 +24,20 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <StrictMode>
+          <Provider store={store}>
+            <ThemeContextProvider>
+              <UserContextProvider>
+                <Layout>
+                  {children}
+                  <CartContainer />
+                </Layout>
+              </UserContextProvider>
+            </ThemeContextProvider>
+          </Provider>
+        </StrictMode>
+      </body>
     </html>
   );
 };

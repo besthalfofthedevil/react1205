@@ -1,5 +1,6 @@
-import { Link } from "react-router";
+import Link from "next/link";
+
 
 export const NavigateBack = () => {
-  return <Link to=".." />;
+  return <Link href=".." />;
 };
