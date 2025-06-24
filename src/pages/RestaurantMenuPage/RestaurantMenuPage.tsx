@@ -1,6 +1,8 @@
+"use client";
 import { useParams } from "react-router";
 import { Menu } from "../../components/Menu/menu";
 import { useGetMenuQuery } from "../../redux/api";
+
 export const RestaurantMenuPage = () => {
   const { restaurantId = "" } = useParams();
   const { data: menu = [], isLoading } = useGetMenuQuery(restaurantId);

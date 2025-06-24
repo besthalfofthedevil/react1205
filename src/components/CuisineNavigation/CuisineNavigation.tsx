@@ -1,3 +1,4 @@
+"use client";
 import classNames from "classnames";
 import styles from "./CuisineNavigation.module.css";
 import { useState } from "react";

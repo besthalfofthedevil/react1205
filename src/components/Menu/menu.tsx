@@ -1,7 +1,7 @@
-import { NavLink } from "react-router";
 import styles from "./menu.module.css";
 import { MenuItem } from "../MenuItem/MenuItem";
 import type { Dish } from "../../redux/entities/types";
+import Link from "next/link";
 
 export const Menu = ({ menu }: { menu: Dish[] }) => {
   return (
@@ -9,11 +9,11 @@ export const Menu = ({ menu }: { menu: Dish[] }) => {
       <ul>
         {menu.map((dish) => {
           return (
-            <NavLink key={dish.id} to={"/dish/" + dish.id}>
+            <Link key={dish.id} href={"/dish/" + dish.id}>
               <li>
                 <MenuItem key={dish.id} dish={dish} />
               </li>
-            </NavLink>
+            </Link>
           );
         })}
       </ul>

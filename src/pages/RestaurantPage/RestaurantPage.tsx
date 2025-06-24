@@ -1,4 +1,5 @@
-import { useParams } from "react-router";
+"use client";
+import { useParams } from "next/navigation";
 import { RestaurantComponent } from "../../components/Restaurant/Restaurant";
 import { useGetRestaurantsQuery } from "../../redux/api";
 

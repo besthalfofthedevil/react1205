@@ -1,3 +1,4 @@
+"use client"
 import type { JSX } from "react";
 import { Counter } from "../Counter/counter";
 import styles from "./MenuItem.module.css";
