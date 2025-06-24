@@ -1,8 +1,7 @@
-import type { JSX } from "react";
+import { type JSX } from "react";
 import styles from "./restaurant.module.css";
 import { StarsBar } from "../StarsBar/stars-bar";
 import classNames from "classnames";
-import { Outlet } from "react-router";
 import type { Restaurant } from "../../redux/entities/types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -13,9 +12,9 @@ export const RestaurantComponent = (props: {
   restaurant: Restaurant;
   children: JSX.Element;
 }): JSX.Element => {
-  const { name, id } = props.restaurant;
+  const { name } = props.restaurant;
   const pathname = usePathname();
-  console.log(pathname);
+
   if (!name) {
     return <p>Loading...</p>;
   }
@@ -31,19 +30,16 @@ export const RestaurantComponent = (props: {
         {RESTAURANT_SUB_ROUTES.map((route) => (
           <Link
             key={route}
-            className={classNames(styles.navTab)}
-            // className={({ isActive }) =>
-            //   classNames(styles.navTab, { [styles.active]: isActive })
-            // }
-            href={`${id}/${route.toLowerCase()}`}
+            className={classNames(styles.navTab, {
+              [styles.active]: pathname.endsWith(route.toLowerCase()),
+            })}
+            href={`${route.toLowerCase()}`}
           >
             {route}
           </Link>
         ))}
       </nav>
-      <section className={styles.content}>
-        <Outlet />
-      </section>
+      <section className={styles.content}>{props.children}</section>
     </div>
   );
 };

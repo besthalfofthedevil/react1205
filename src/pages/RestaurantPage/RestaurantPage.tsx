@@ -3,7 +3,7 @@ import { useParams } from "next/navigation";
 import { RestaurantComponent } from "../../components/Restaurant/Restaurant";
 import { useGetRestaurantsQuery } from "../../redux/api";
 
-export const RestaurantPage = () => {
+export const RestaurantPage = ({ children }) => {
   const { restaurantId = "" } = useParams();
   const { data: restaurant } = useGetRestaurantsQuery(undefined, {
     selectFromResult: (result) => ({
@@ -16,5 +16,9 @@ export const RestaurantPage = () => {
     return "No data for the restaurant";
   }
 
-  return <RestaurantComponent key={restaurantId} restaurant={restaurant} />;
+  return (
+    <RestaurantComponent restaurant={restaurant}>
+      {children}
+    </RestaurantComponent>
+  );
 };
