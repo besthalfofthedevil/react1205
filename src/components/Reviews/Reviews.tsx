@@ -15,14 +15,12 @@ export const Reviews = ({
   if (isLoading) {
     return "Loading";
   }
-  const onItemClick = (id: string) => {
-    onReviewSelected(id);
-  };
+
   return (
     <div className={styles.reviewsContent}>
       <ul className={styles.existingReviews}>
         {reviews.map((review) => (
-          <li key={review.id} onClick={() => onItemClick(review.id)}>
+          <li key={review.id} onClick={() => onReviewSelected(review.id)}>
             <ReviewCard key={review.id} review={review} />
           </li>
         ))}
