@@ -1,41 +1,50 @@
+import { useEffect } from "react";
 import { useReviewForm } from "../../hooks/useReviewForm";
+import type { Review } from "../../redux/entities/types";
 import { Counter } from "../Counter/counter";
 import styles from "./review-form.module.css";
 
-export const ReviewForm = () => {
+export const ReviewForm = (props: {
+  review?: Review;
+  isSubmitDisabled: boolean;
+  onSubmit?: (review: Review) => void;
+}) => {
+  const { review, onSubmit = () => {}, isSubmitDisabled = false } = props;
+
   const [
     formState,
     resetForm,
-    onUserNameChange,
+    setForm,
     onReviewChange,
     incrementRating,
     decrementRating,
-  ] = useReviewForm();
-  const { userName, review, rating } = formState;
+  ] = useReviewForm(review);
+  const { text, rating, id } = formState;
+
+  useEffect(() => {
+    if (review) {
+      setForm(review);
+    }
+  }, [review]);
+  
   return (
     <form
       className={styles.reviewForm}
       onSubmit={(e) => {
         e.preventDefault();
+        onSubmit(formState);
         resetForm();
       }}
     >
-      <h3 className={styles.formTitle}>Leave your review</h3>
-      <div className={styles.formGroup}>
-        <label className={styles.formLabel}>Your Name:</label>
-        <input
-          type="text"
-          name="user"
-          value={userName}
-          onChange={(e) => onUserNameChange(e?.target.value)}
-        />
-      </div>
+      <h3 className={styles.formTitle}>{`${
+        id ? "Update" : "Leave"
+      } your review`}</h3>
       <div className={styles.formGroup}>
         <label className={styles.formLabel}>Review Text:</label>
         <textarea
           name="text"
           placeholder="Write your review here..."
-          value={review}
+          value={text}
           onChange={(e) => onReviewChange(e?.target.value)}
         />
       </div>
@@ -51,8 +60,12 @@ export const ReviewForm = () => {
           }}
         />
       </div>
-      <button className={styles.publishBtn} type="submit">
-        PUBLISH REVIEW
+      <button
+        className={styles.publishBtn}
+        type="submit"
+        disabled={isSubmitDisabled}
+      >
+        {`${id ? "UPDATE" : "PUBLISH"} REVIEW`}
       </button>
     </form>
   );

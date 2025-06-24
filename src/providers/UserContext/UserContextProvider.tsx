@@ -9,7 +9,11 @@ export const UserContextProvider = ({ children }: React.PropsWithChildren) => {
     setUser((user) =>
       user.isAutenticated
         ? { isAutenticated: false }
-        : { name: "John Doe", isAutenticated: true }
+        : {
+            name: "Sam",
+            isAutenticated: true,
+            id: "dfb982e9-b432-4b7d-aec6-7f6ff2e6af54",
+          }
     );
   };
 

@@ -1,16 +1,17 @@
 import { NavLink } from "react-router";
 import styles from "./menu.module.css";
 import { MenuItem } from "../MenuItem/MenuItem";
+import type { Dish } from "../../redux/entities/types";
 
-export const Menu = ({ menu }: { menu: string[] }) => {
+export const Menu = ({ menu }: { menu: Dish[] }) => {
   return (
     <section className={styles.menu}>
       <ul>
-        {menu.map((dishId) => {
+        {menu.map((dish) => {
           return (
-            <NavLink key={dishId} to={"/dish/" + dishId}>
+            <NavLink key={dish.id} to={"/dish/" + dish.id}>
               <li>
-                <MenuItem key={dishId} dishId={dishId} />
+                <MenuItem key={dish.id} dish={dish} />
               </li>
             </NavLink>
           );

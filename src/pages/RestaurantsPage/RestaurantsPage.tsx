@@ -1,30 +1,32 @@
 import { Banner } from "../../components/Banner/Banner";
-import { useSelector } from "react-redux";
 import { RestaurantsList } from "../RestaurantsList/RestaurantsList";
-import { selectRestaurantsIds } from "../../redux/entities/restaurants/restaurantsSlice";
-import { useRequest } from "../../redux/hooks/useRequest";
-import { RequestStatus } from "../../redux/entities/request/requestSlice";
-import { getRestaurants } from "../../redux/entities/restaurants/getRestaurants";
+import { useGetRestaurantsQuery } from "../../redux/api";
 
 export const RestaurantsPage = () => {
-  const requestStatus = useRequest(getRestaurants);
-  const restaurantIds = useSelector(selectRestaurantsIds);
+  const {
+    data: restaurants,
+    isLoading,
+    isError,
+  } = useGetRestaurantsQuery(undefined);
 
-  if (restaurantIds.length === 0) {
+  if (isLoading) {
     return <p>Loading restaurants...</p>;
   }
 
-  if (requestStatus === RequestStatus.rejected) {
+  if (isError) {
     return <p>Error loading restaurants. Please try again later.</p>;
   }
 
+  if (!restaurants) {
+    return <>No restaurants.</>;
+  }
   return (
     <>
       <Banner
         title="Order Food"
-        subtitle={`From ${restaurantIds.length} Restaurants`}
+        subtitle={`From ${restaurants.length} Restaurants`}
       />
-      <RestaurantsList restaurantIds={restaurantIds} />
+      <RestaurantsList restaurants={restaurants} />
     </>
   );
 };

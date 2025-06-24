@@ -3,22 +3,27 @@ import { type Dish } from "../types";
 import type { RootState } from "../../store";
 import { getRestaurantMenu } from "./getMenu";
 import { getDish } from "./getDish";
+import { api } from "../../api";
 
-const entityAdapter = createEntityAdapter<Dish>();
+export const dishEntityAdapter = createEntityAdapter<Dish>();
 
 export const dishesSlice = createSlice({
   name: "dishesSlice",
-  initialState: entityAdapter.getInitialState(),
+  initialState: dishEntityAdapter.getInitialState(),
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getRestaurantMenu.fulfilled, (state, action) => {
         const { payload } = action;
-        entityAdapter.upsertMany(state, payload);
+        dishEntityAdapter.upsertMany(state, payload);
       })
       .addCase(getDish.fulfilled, (state, action) => {
         const { payload } = action;
-        entityAdapter.upsertOne(state, payload);
+        dishEntityAdapter.upsertOne(state, payload);
+      })
+      .addMatcher(api.endpoints.getMenu.matchFulfilled, (state, action) => {
+        const { payload } = action;
+        dishEntityAdapter.upsertMany(state, payload);
       });
   },
 });
@@ -26,4 +31,4 @@ export const dishesSlice = createSlice({
 export const selectDishesSlice = (state: RootState) => state[dishesSlice.name];
 
 export const { selectIds: selectDishIds, selectById: selectDishById } =
-  entityAdapter.getSelectors(selectDishesSlice);
+  dishEntityAdapter.getSelectors(selectDishesSlice);

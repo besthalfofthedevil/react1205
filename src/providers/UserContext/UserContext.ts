@@ -1,7 +1,10 @@
 import { createContext } from "react";
 
 export type UserContextType = [
-  { name?: string; isAutenticated: boolean },
+  (
+    | { name: string; id: string; isAutenticated: true }
+    | { isAutenticated: false }
+  ),
   () => void
 ];
 

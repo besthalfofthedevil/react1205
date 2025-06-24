@@ -1,25 +1,25 @@
-import { useSelector } from "react-redux";
 import { Banner } from "../../components/Banner/Banner";
 import { CuisineNavigation } from "../../components/CuisineNavigation/CuisineNavigation";
 import { RestaurantCardContainer } from "../../components/RestaurantCardContainer/RestaurantCardContainer";
 import styles from "./HomePage.module.css";
-import { selectRestaurantsIds } from "../../redux/entities/restaurants/restaurantsSlice";
-import { getRestaurants } from "../../redux/entities/restaurants/getRestaurants";
-import { useRequest } from "../../redux/hooks/useRequest";
-import { RequestStatus } from "../../redux/entities/request/requestSlice";
+
+import { useGetRestaurantsQuery } from "../../redux/api";
 
 //Very basic HomePage component that displays a banner, cuisine navigation, and a list of restaurant cards.
 export const HomePage = () => {
   //TODO: select restaurant ids from the store by cuisine
+  const {
+    data: restaurants,
+    isLoading,
+    isFetching,
+    isError,
+  } = useGetRestaurantsQuery(undefined);
 
-  const requestStatus = useRequest(getRestaurants);
-  const restaurantIds = useSelector(selectRestaurantsIds);
-
-  if (restaurantIds.length === 0) {
+  if (isLoading || isFetching) {
     return <p>Loading restaurants...</p>;
   }
 
-  if (requestStatus === RequestStatus.rejected) {
+  if (isError) {
     return <p>Error loading restaurants. Please try again later.</p>;
   }
 
@@ -27,14 +27,17 @@ export const HomePage = () => {
     <div>
       <Banner
         title="Order Food"
-        subtitle={`From ${restaurantIds.length} Restaurants`}
+        subtitle={`From ${restaurants?.length} Restaurants`}
       />
       <CuisineNavigation />
-      {restaurantIds.length === 0 && <p>No restaurants available.</p>}
+      {restaurants?.length === 0 && <p>No restaurants available.</p>}
       <ul>
-        {restaurantIds.map((id) => (
-          <li key={id} className={styles.card}>
-            <RestaurantCardContainer key={id} id={id} />
+        {restaurants?.map((restaurant) => (
+          <li key={restaurant.id} className={styles.card}>
+            <RestaurantCardContainer
+              key={restaurant.id}
+              restaurant={restaurant}
+            />
           </li>
         ))}
       </ul>

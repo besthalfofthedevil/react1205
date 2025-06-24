@@ -63,41 +63,42 @@ router.get("/users", (req, res, next) => {
   reply(res, normalizedUsers);
 });
 
-/*
-An example to use for HW#10
 
-router.post("/review/:productId", (req, res, next) => {
+router.post("/review/:restaurantId", (req, res, next) => {
+  console.log("Add review");
   const body = req.body;
-  const productId = req.params?.productId;
-  const product = productId && getById(products)(productId);
+  const restaurantId = req.params?.restaurantId;
+  const restaurant = restaurantId && getById(normalizedRestaurants)(restaurantId);
   let newReview = {};
 
-  if (product && body) {
+  if (restaurant && body) {
     const newReviewId = nanoid();
 
     newReview = {
       ...body,
       id: newReviewId,
     };
-    product.reviews.push(newReviewId);
-    reviews.push(newReview);
+    restaurant.reviews.push(newReviewId);
+    normalizedReviews.push(newReview);
   }
 
   reply(res, newReview);
 });
 
 router.patch("/review/:reviewId", (req, res, next) => {
+  console.log("Update review");
   const body = req.body;
   const reviewId = req.params?.reviewId;
+  console.log("Update review", reviewId);
   let updatedReview;
 
   if (reviewId) {
-    updatedReview = updateById(reviews)(reviewId, body);
+    updatedReview = updateById(normalizedReviews)(reviewId, body);
   }
 
   reply(res, updatedReview);
 });
-*/
+
 
 
 module.exports = router;
