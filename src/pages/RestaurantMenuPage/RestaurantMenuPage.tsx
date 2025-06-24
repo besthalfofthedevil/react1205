@@ -1,5 +1,5 @@
 "use client";
-import { useParams } from "react-router";
+import { useParams } from "next/navigation";
 import { Menu } from "../../components/Menu/menu";
 import { useGetMenuQuery } from "../../redux/api";
 
