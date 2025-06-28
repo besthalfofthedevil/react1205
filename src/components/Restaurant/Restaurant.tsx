@@ -1,3 +1,4 @@
+'use client'
 import { type JSX } from "react";
 import styles from "./restaurant.module.css";
 import { StarsBar } from "../StarsBar/stars-bar";

@@ -44,6 +44,7 @@ export const ReviewForm = (props: {
           name="text"
           placeholder="Write your review here..."
           value={text}
+          className={styles.reviewText}
           onChange={(e) => onReviewChange(e?.target.value)}
         />
       </div>
