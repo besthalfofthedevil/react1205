@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import Link from "next/link";
 import styles from "./RestaurantCardContainer.module.css";
 import { StarsBar } from "../StarsBar/stars-bar";
 import type { Restaurant } from "../../redux/entities/types";
@@ -13,7 +13,7 @@ export const RestaurantCardContainer = ({
   }
 
   return (
-    <NavLink to={"/restaurants/" + restaurant.id} key={restaurant.id}>
+    <Link href={"/restaurants/" + restaurant.id} key={restaurant.id}>
       <div className={styles.restaurantCard}>
         <img
           src="https://dummyimage.com//120x120/8B4513/FFFFFF?text=Steak"
@@ -26,6 +26,6 @@ export const RestaurantCardContainer = ({
           <StarsBar rating={4.5} totalStars={5} />
         </div>
       </div>
-    </NavLink>
+    </Link>
   );
 };

@@ -1,5 +1,10 @@
-import { Link } from "react-router";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export const NavigateBack = () => {
-  return <Link to=".." />;
+  const router = useRouter();
+  const returnBack = () => {
+    router.back();
+  };
+  return <Link href="" onClick={returnBack}/>;
 };

@@ -1,9 +1,0 @@
-.tab {
-  display: flex;
-  border: 1px solid black;
-  margin: 0 0.5em;
-}
-.active {
-  background-color: #007bff;
-  color: white;
-}

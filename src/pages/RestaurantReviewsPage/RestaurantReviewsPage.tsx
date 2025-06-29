@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+'use client'
 import styles from "./RestaurantReviewsPage.module.css";
 import { useUserContext } from "../../hooks/useUserContext";
 import { Reviews } from "../../components/Reviews/Reviews";
@@ -13,6 +13,7 @@ import {
 import { RequestStatus } from "../../redux/entities/request/requestSlice";
 import type { Review } from "../../redux/entities/types";
 import { useState } from "react";
+import { useParams } from "next/navigation";
 
 export const RestaurantReviewsPage = () => {
   const { restaurantId = "" } = useParams();

@@ -44,7 +44,7 @@
   transition: border-color 0.2s ease;
 }
 
-textarea:focus {
+.reviewText:focus {
   border-color: var(--primary-orange);
 }
 
